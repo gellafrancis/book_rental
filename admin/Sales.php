@@ -328,7 +328,7 @@
     <div class="mui-divider"></div>
     <ul>
       <li>
-        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php echo $_SESSION['AdminID'] ?></strong></a> 
+        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php echo $_SESSION['email'] ?></strong></a> 
       </li> 
         <li >
           <a href="UserList.php"><strong><i class="fa fa-book"></i> &nbsp;User List</strong></a>
