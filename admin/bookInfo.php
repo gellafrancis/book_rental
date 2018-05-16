@@ -1,6 +1,10 @@
 
-<?php include("functions/init.php");?>
+<?php include("functions/init.php");
+book_checker();
+?>
+    
 <?php 
+
 			   $id=$_SESSION['id'];
 			   
 			   $query="select * from book_details where B_ID='$id' limit 1";
@@ -19,7 +23,8 @@
 				   $_SESSION['quantity']=$res['B_QTY'];
 			   $_SESSION['image']=$res['B_IMG'];
 			   
-			   }
+               }
+               unset($_SESSION['id']);
 			   
 			   
 			   if(isset($_POST['save'])){
@@ -772,6 +777,6 @@ function myVal() {
               </div>
               </div>
                 </div>
-   
+  
   </body>
     </html>

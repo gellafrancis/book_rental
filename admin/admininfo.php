@@ -1,4 +1,5 @@
 <?php include("functions/init.php");?>
+<?php admin_checker(); ?>
 <!doctype html>
     <html>
     <title>Profile</title>
@@ -22,6 +23,7 @@
            
         
          }
+         unset($_SESSION['id1']); //ito muna
          ?>
 
     <head>

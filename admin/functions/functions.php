@@ -244,6 +244,22 @@ function logged_in(){
 
 }
 
+function book_checker(){
+  if(!isset($_SESSION['id'])){
+    redirect("booklist.php"); 
+  }
+}
+function user_checker(){
+  if(!isset($_SESSION['id'])){
+    redirect("userlist.php"); 
+  }
+}
+function admin_checker(){
+  if(!isset($_SESSION['id1'])){
+    redirect("adminlist.php"); 
+  }
+}
+
  
  
  

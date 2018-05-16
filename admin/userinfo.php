@@ -1,4 +1,5 @@
 <?php include("functions/init.php");?>
+<?php user_checker(); ?>
 <!doctype html>
     <html>
     <title>User Information</title>
@@ -19,6 +20,7 @@
            
          
          }
+         unset($_SESSION['id']); 
          ?>
     <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
