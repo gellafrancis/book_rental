@@ -1,3 +1,13 @@
+<?php 
+session_start();
+require 'D:/xampp/htdocs/ITELEC/connect.php';
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -449,7 +459,7 @@ p.description {
         <a class="navbar-brand" href="#" class="link" style="color:white">BookRentals</a>
       </div>
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
-        <li><a href="index.php" style="color:white">Home</a></li>
+        <li><a href="index.html" style="color:white">Home</a></li>
         <li><a href="#bottom" style="color:white;text-decoration: underline">Rent</a></li>
         <li><a href="#" style="color:white">Return</a></li>
         <li><a href="#" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
@@ -494,17 +504,28 @@ p.description {
         <li class="sub">
             <a href="#" style="color:#FF8329"><i class="fa fa-trophy" style="color:#FF8329"></i> TOP BOOKS</a>
             <ul>
-               <li><a href="#">Book 1</a></li>
-               <li><a href="#">Book 2</a></li>
-               <li><a href="#">Book 3</a></li>
-               <li><a href="#">Book 4</a></li>
-               <li><a href="#">Book 5</a></li>
+			
+			
+			<?php $query="select * from book_details order by RENT_COUNT desc limit 5";
+			$result1=@mysqli_query($con,$query);
+			
+			
+			while($res1=mysqli_fetch_array($result1)){
+				
+				echo "<li><a href='Book.php?value=".$res1['B_ID']."'>".$res1['B_TITLE']."</a></li>";	
+			}
+			
+			
+			
+			?>
+               
+               
             </ul>
         </li>
     </ul>
         </div>
         <div class="menu-colors menu-item">
-            <div class="header-item" >Search</div>
+            <div class="header-item" >	</div>
             <ul class="color-row1">
                 <form method="POST">
                     <input type="text" name="search" value="Search" class="form-control" />
@@ -532,7 +553,7 @@ p.description {
                             <tr>
                                 <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
                                 <td>
-                                    <a href="Book.php" style="color:#FF8329">Call Me By Your Name</a> <br>
+                                    <a href="Book.html" style="color:#FF8329">Call Me By Your Name</a> <br>
                                     Author: Andre Aciman <br>
                                     Price: ₱100
                                 </td>
@@ -540,11 +561,45 @@ p.description {
                             <tr>
                                 <td><img src="assets/img/BookCover/The Ones Who Walk Away from Omelas.jpg" width="70"></td>
                                 <td>
-                                    <a href="Book.php" style="color:#FF8329">The Ones Who Walk Away from Omelas</a> <br>
+                                    <a href="#" style="color:#FF8329">The Ones Who Walk Away from Omelas</a> <br>
                                     Author: Ursula K. Le Guin<br>
                                     Price: ₱100
                                 </td>
                             </tr>
+							
+							<?php 
+							$query="select * from book_details";
+							$result=@mysqli_query($con,$query);
+							
+							while($res=mysqli_fetch_array($result)){
+								echo "<tr>";
+								echo "<td><img width='70' src='../admin/".$res['B_IMG']."'></td>";
+								echo "<td> <a href='Book.php?value=".$res['B_ID']."'style='color:#FF8329'>".$res['B_TITLE']."</a><br>";
+								echo "Author: ".$res['B_AUTHOR']."<br>";
+								echo "Price: ₱".$res['B_PRICE']."</td>";
+								
+								
+								
+								
+								
+								
+							}
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							?>
+							
+							
+							
+							
+							
                         </tbody>
                     </table>
                     
@@ -581,36 +636,19 @@ p.description {
 
 		    <div class="ocarousel_example_programmatic">
                 <div class="ocarousel_window">
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/Noli Me Tangere.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/Silent Spring.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/The Fault In Our Stars.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/Call Me By Your Name.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/The Ones Who Walk Away from Omelas.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/Outliers The Story of Success.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/MacBeth.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/2318271.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                        <img src="assets/img/BookCover/Odyssey.jpg" width="100%">
-                    </div>
-                    <div class="example_programmatic_slide">
-                         <img src="assets/img/BookCover/Carrying Albert Home.jpg" width="100%">
-                    </div>
+				<?php $query="select * from book_details order by RENT_COUNT desc limit 10";
+			$result1=@mysqli_query($con,$query);
+			
+			
+			while($res1=mysqli_fetch_array($result1)){
+				
+				echo "<div class='example_programmatic_slide'><img src='../admin/".$res1['B_IMG']."' width='100%'></div>";
+			}
+			
+			
+			
+			?>
+              
                 </div>
 
                         <center><span class="ocarousel_pagination_current"></span>

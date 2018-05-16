@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
+	
+	
+	<?php
+session_start();
+require 'D:/xampp/htdocs/ITELEC/connect.php';
+	if(isset($_GET['value'])&&$_GET['value']){
+  $var = $_GET['value']; //some_value	
+  $query="Select * from book_details where B_ID='$var'";
+  $result=mysqli_query($con,$query);
+  
+  while($res=mysqli_fetch_array($result)){
+	  $title=$res['B_TITLE'];
+	  $isbn=$res['B_ISBN'];
+	  $author=$res['B_AUTHOR'];
+	  $publisher=$res['B_PUBLISHER'];
+	  $published=$res['B_PUBLISHED'];
+	  $desc=$res['B_DESC'];
+	  $stock=$res['B_QTY'];
+	  $img=$res['B_IMG'];
+	  $price=$res['B_PRICE'];
+	  $other=$res['B_OTHER'];
+  
+	}}else{
+		header('location:Rent.php');
+	}
+	
+	?>
 <html>
 
 <head>
@@ -152,8 +179,8 @@
         <a class="navbar-brand" href="#" class="link" style="color:white">BookRentals</a>
       </div>
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
-        <li><a href="index.php" style="color:white">Home</a></li>
-        <li><a href="Rent.php" style="color:white">Rent</a></li>
+        <li><a href="index.html" style="color:white">Home</a></li>
+        <li><a href="Rent.html" style="color:white">Rent</a></li>
         <li><a href="#" style="color:white">Return</a></li>
         <li><a href="#" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
 <li><a href="#" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
@@ -189,43 +216,40 @@
 					<div class="panel-body">
 						<div class="col-md-12 panelTop">	
 							<div class="col-md-4">	
-								<img class="img-responsive" src="assets/img/BookCover/Noli Me Tangere.jpg" alt="" width="350"/>
+								<img class="img-responsive" src="<?php echo "../admin/". $img;?>" alt="" width="350"/>
 							</div>
 							<div class="col-md-8" style="text-align: left;">	
-								<h2>Noli Me Tangere</h2>
+								<h2><?php echo $title?></h2>
                                                                 <span class="glyphicon glyphicon-star" style="color:gold"></span>
                                                                 <span class="glyphicon glyphicon-star" style="color:gold"></span>
                                                                 <span class="glyphicon glyphicon-star" style="color:gold"></span>
                                                                 <span class="glyphicon glyphicon-star" style="color:gold"></span><br> <br>
-                                                                    ISBN: 98765345678 <br>
-                                                                    AUTHOR: Dr. Jose Rizal <br>
-                                                                    PUBLISHER: C&E Publishing Inc. <br>
+                                                                    ISBN: <?php echo $isbn; ?> <br>
+                                                                    AUTHOR: <?php echo $author;?><br>
+                                                                    PUBLISHER: <?php echo $publisher?><br>
 
-                                                                    Additional Details <br>
-                                                                    PUBLICATION DATE: 1/7/2011 <br>
-                                                                    PAGES: 544 
-                                                                    <br>                                                                 
+                                                                    Additional Details 
+                                                                                                                                     
                                                             <p style="color:rgb(75,75,75); padding-top: 8%">
-                                                                Noli Me Tángere (Latin for Don’t Touch Me ) is a novel written by 
-                                                                José Rizal, one of the national heroes of the Philippines, during 
-                                                                the colonization of the country by Spain to describe perceived
-                                                                inequities of the Spanish Catholic priests and the ruling government.
+                                                                <?php echo $desc; ?>
                                                             </p>
                                                             <br>
-                                                            <h4>Stock: <input type="text" name="stock" value="5" disabled="disabled" class="form-control" style="width: 200px;"/> </h4>
+                                                            <h4>Stock: <input type="text" name="stock" value="<?php echo $stock?>" disabled="disabled" class="form-control" style="width: 200px;"/> </h4>
                                                              <h5>Quantity: <select name="quan" class="form-control" style="width:200px">
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10</option>
+                                                                    
+																	<?php for($i=1;$i<=$stock;$i++){
+																		if($i<=10){
+																		echo "<option value='".$i."'>".$i."</option>";}
+																		else if($stock==0){
+																		echo "<option disabled>0</option>";	
+																			
+																		}
+																		else{
+																		break;	
+																		}
+                                                                    }?>
                                                                 </select></h5>
-                                                        <h5><b>Price:</b> <span class="itemPrice">₱100.00</span></h5>
+                                                        <h5><b>Price:</b> <span class="itemPrice">₱ <?php echo $price;?></span></h5>
 							</div>
                                                     
 
@@ -233,8 +257,8 @@
 						
                                             <div class="" style="float:right">
                                                     <div>
-								<button class="btn btn-lg btn-add-to-cart"><a href="Cart.php"><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart </a></button>	
-                                                                <button class="btn btn-lg btn-add-to-cart"><span class="glyphicon glyphicon-credit-card"></span>   Rent</button>
+								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart</button>	
+                                                                <button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-credit-card"></span>   Rent</button>
                                                    </div>
                                                 </div> 
 				</div>
@@ -268,10 +292,8 @@
         </div>
                     <div class="grey">                
                 <h2>  Other Descriptions: </h2>
-    In more than a century since its appearance, José Rizal's Noli Me Tangere has become widely known as the great novel of the Philippines. 
-    A passionate love story set against the ugly political backdrop of repression, torture, and murder, "The Noli," as it is called in the Philippines, was the first major artistic manifestation
-    of Asian resistance to European colonialism, and Rizal became a guiding conscience—and martyr—for the revolution that would subsequently rise up in the Spanish province.
-           </div>
+    <?php echo $other;?>
+	</div>
     </div>
 
     </div>
