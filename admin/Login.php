@@ -128,8 +128,8 @@ h4{
   <h4>Administrator Login</h4>
   <?php echo display_message();?>
   <?php validate_user_login();?>
-  <input type="text" name="email" value="email" placeholder="email" >
-  <input type="password" name="password" value="password" placeholder="Password">
+  <input type="text" name="email"  placeholder="email" >
+  <input type="password" name="password"  placeholder="Password">
   <input type="submit" value="Log in"> <a href="forgotpassword.php" style="text-decoration:none;"><font size="2" style="color:#B8B8B8;">Forgot password</font></a><br><br><br>
  
     </div>

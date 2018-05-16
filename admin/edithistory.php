@@ -7,6 +7,7 @@
         $query="delete from log_history where log_id='$id'";
         $result=@mysqli_query($con,$query); 
  }
+ 
  ?>
 
 

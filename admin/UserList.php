@@ -365,7 +365,7 @@
     
           <h1><strong>User List</strong></h1>
           <hr>
-            <!--  -->
+          
         <form method="POST" action="UserList.php"> 
         <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
 

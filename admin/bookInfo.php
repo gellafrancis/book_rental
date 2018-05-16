@@ -5,7 +5,8 @@ book_checker();
     
 <?php 
 
-			   $id=$_SESSION['id'];
+               $id=$_SESSION['id'];
+               
 			   
 			   $query="select * from book_details where B_ID='$id' limit 1";
 			   $result=@mysqli_query($con,$query);
@@ -24,7 +25,7 @@ book_checker();
 			   $_SESSION['image']=$res['B_IMG'];
 			   
                }
-               unset($_SESSION['id']);
+               
 			   
 			   
 			   if(isset($_POST['save'])){
@@ -49,6 +50,7 @@ book_checker();
 				  
 				  $getid="select B_ID from book_details where B_ISBN='$isbn' LIMIT 1";
                   $res=@mysqli_query($con,$getid);
+                  date_default_timezone_set('Asia/Manila');
                   $date = date('Y-m-d\TH:i:s.u');  
                   $activity = "EDIT Book with an ISBN#: " . $isbn;
                   $sql = "INSERT INTO log_history(log_date,  log_activity)";
@@ -777,6 +779,7 @@ function myVal() {
               </div>
               </div>
                 </div>
+       
   
   </body>
     </html>

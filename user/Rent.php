@@ -1,12 +1,4 @@
-<?php 
-session_start();
-require 'D:/xampp/htdocs/ITELEC/connect.php';
-
-
-
-
-
-?>
+<?php include("functions/init.php");?>
 
 <!DOCTYPE html>
 <html>
@@ -459,7 +451,7 @@ p.description {
         <a class="navbar-brand" href="#" class="link" style="color:white">BookRentals</a>
       </div>
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
-        <li><a href="index.html" style="color:white">Home</a></li>
+        <li><a href="index.php" style="color:white">Home</a></li>
         <li><a href="#bottom" style="color:white;text-decoration: underline">Rent</a></li>
         <li><a href="#" style="color:white">Return</a></li>
         <li><a href="#" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
@@ -524,17 +516,7 @@ p.description {
         </li>
     </ul>
         </div>
-        <div class="menu-colors menu-item">
-            <div class="header-item" >	</div>
-            <ul class="color-row1">
-                <form method="POST">
-                    <input type="text" name="search" value="Search" class="form-control" />
-                </form>
-            </ul>
-            <ul class="color-row2">
-                <center>  <button type="submit" value="Submit" class="btn btn-warning" >Submit</button> </center>
-            </ul>
-        </div>     
+            
     </div>
 
     <div class="items">
@@ -553,7 +535,7 @@ p.description {
                             <tr>
                                 <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
                                 <td>
-                                    <a href="Book.html" style="color:#FF8329">Call Me By Your Name</a> <br>
+                                    <a href="Book.php" style="color:#FF8329">Call Me By Your Name</a> <br>
                                     Author: Andre Aciman <br>
                                     Price: ₱100
                                 </td>

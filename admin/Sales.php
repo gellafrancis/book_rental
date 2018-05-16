@@ -1,8 +1,4 @@
-<?php session_start();
-require 'D:/xampp/htdocs/ITELEC/connect.php';
-
-
-?>
+<?php include("functions/init.php");?>
 <!doctype html>
     <html>
     <title>Administrator List</title>
@@ -80,7 +76,7 @@ require 'D:/xampp/htdocs/ITELEC/connect.php';
       function drawChart1() {
         var data = google.visualization.arrayToDataTable([
           ['Genre', 'Speakers (in millions)'],
-          ['Book1',  5.85],
+          ['Book1',  23.00],
           ['Book2',  1.66],
           ['Book3', 0.316],
           ['Book4', 0.0791]
@@ -345,32 +341,32 @@ require 'D:/xampp/htdocs/ITELEC/connect.php';
     <div class="mui-divider"></div>
     <ul>
       <li>
-        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php echo $_SESSION['AdminID'] ?></strong></a> 
+        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php echo $_SESSION['email'] ?></strong></a> 
       </li> 
         <li >
-          <a href="UserList.html"><strong><i class="fa fa-book"></i> &nbsp;User List</strong></a>
+          <a href="UserList.php"><strong><i class="fa fa-book"></i> &nbsp;User List</strong></a>
       </li>        
       <li >
-          <a href="BookList.html"><strong><i class="fa fa-book"></i> &nbsp;Book List</strong></a>
+          <a href="BookList.php"><strong><i class="fa fa-book"></i> &nbsp;Book List</strong></a>
       </li>
       <li  >
-          <a href="AdminList.html"><strong><i class="fa fa-lock"></i> &nbsp;Admin List</strong></a>
+          <a href="AdminList.php"><strong><i class="fa fa-lock"></i> &nbsp;Admin List</strong></a>
       </li>
        <li class="active">
-          <a href="Sales.html"><strong><i class="fa fa-sticky-note"></i> &nbsp;Sales</strong></a>
+          <a href="Sales.php"><strong><i class="fa fa-sticky-note"></i> &nbsp;Sales</strong></a>
       </li>
       <br>
        <li>
-           <a href="admininformation.php"><strong><i class="fa fa-user-circle"></i> &nbsp;Account Profile</strong></a>
+           <a href="adminprofile.php"><strong><i class="fa fa-user-circle"></i> &nbsp;Account Profile</strong></a>
       </li>
        <li>
-           <a href="edithistory.html"><strong><i class="fa fa-history "></i> &nbsp;Edit History</strong></a>
+           <a href="edithistory.php"><strong><i class="fa fa-history "></i> &nbsp;Edit History</strong></a>
       </li> 
        <li>
            <a href="about.php"><strong><i class="fa fa-info-circle"></i> &nbsp;About</strong></a>
       </li>
        <li>
-           <a href="index.html"><strong><i class="fa fa-sign-out "></i> &nbsp;Logout</strong></a>
+           <a href="logout.php"><strong><i class="fa fa-sign-out "></i> &nbsp;Logout</strong></a>
       </li>        
     </ul></div>
     <header id="header">

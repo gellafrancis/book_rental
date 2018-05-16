@@ -369,7 +369,7 @@ function logged_in(){
       }else{
         set_message('<div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Sorry! </strong>You can\'t can\'t access this user.  
+        <strong>Sorry! </strong>Please logout first before you access as a user.  
         </div>');
         return false;
       }
@@ -380,6 +380,15 @@ function logged_in(){
 
   }
 
+}
+
+function input_search(){
+  if($_SERVER['REQUEST_METHOD'] == "GET"){
+      $keyword = clean($_GET['search']);
+      if (isset($keyword)){
+        echo $keyword;
+      }
+  }
 }
   
 

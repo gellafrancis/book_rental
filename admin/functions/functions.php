@@ -39,6 +39,7 @@ HEREDOC;
 
 // Validation Functions
 function validate_user_registration2(){
+
   $errors = []; //save all the error
   if($_SERVER['REQUEST_METHOD'] == "POST"){
       $birthday = clean($_POST['bdo']);
@@ -243,7 +244,7 @@ function logged_in(){
   }
 
 }
-
+// checkers kung may laman ba yung mga view
 function book_checker(){
   if(!isset($_SESSION['id'])){
     redirect("booklist.php"); 

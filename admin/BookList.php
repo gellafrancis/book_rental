@@ -23,6 +23,7 @@
         $result=@mysqli_query($con,$query);
 
         $sql = "INSERT INTO log_history(log_date,  log_activity)";
+        date_default_timezone_set('Asia/Manila');
         $date = date('Y-m-d\TH:i:s.u'); 
         $activity = "Delete Book with an ISBN#: " . $id;
         $sql .= " VALUES ('$date', '$activity')";
@@ -34,9 +35,9 @@
 		  
 		   ?> 
 	<html>
-    <title>Edit History</title>
+    <title>Book List</title>
     <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <link rel="shortcut icon" href="assets/img/book2.png" type="image/png">
             <link href="//cdn.muicss.com/mui-0.9.38/css/mui.min.css" rel="stylesheet" type="text/css" />
@@ -66,7 +67,7 @@
             <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js"></script>
-   <style>
+ <style>
         @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
             html,
             body {
@@ -397,10 +398,9 @@
            
           <h1><strong>Book List</strong></h1>
           <hr>
-            <!--  -->
-            <form method="POST" action="BookList.php" > 
-                            <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
-  				<thead>
+          <form method="POST" action="BookList.php"> 
+        <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
+<thead>
 	    				<tr class="warning">
 	      				<th scope="col"><center>Book ID</center></th>						
 				  	    <th scope="col"><center>ISBN</center></th> 
@@ -429,11 +429,11 @@
 					echo "<td><center><button class='btn btn-warning btn-block' name='view' value='".$res['B_ID']."'>View</button></center></td>";
           echo "<td><center><button class='btn btn-danger btn-block' name='delete' value='".$res['B_ISBN']."'>Delete</button></center></td>";
 					
-          echo "</tr>";
+          
 				}
 			
 				?>
-									
+					</tr>				
   				</tbody>
 				
 				
@@ -454,8 +454,16 @@
     
 </div>
 		   
-		   
-		   
+		 <script>  
+function test(pageNumber)
+{
+
+  var page="#page-id-"+pageNumber;
+  $('.select').hide()
+  $(page).show()
+
+}
+</script> 
 		   
 		   
 		   
