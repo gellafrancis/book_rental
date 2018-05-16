@@ -1,4 +1,8 @@
-<?php include("functions/init.php");?>
+<?php include("functions/init.php");
+
+// hahaha
+?>
+
 <!doctype html>
     <html>
     <title>Add Admin</title>
