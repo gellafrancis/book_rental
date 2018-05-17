@@ -1,6 +1,6 @@
 <?php include("functions/init.php");
 
-// hahaha
+
 ?>
 
 <!doctype html>
