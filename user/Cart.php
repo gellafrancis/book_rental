@@ -1,4 +1,48 @@
 <!DOCTYPE html>
+<?php include("functions/init.php");?>
+
+<?php
+
+if(isset($_GET['value'])&&$_GET['value']){
+// values
+  $var = $_GET['value']; //some_value	
+  $query="Select * from book_details where B_ID='$var'";
+  $result=mysqli_query($con,$query);
+  
+  while($res=mysqli_fetch_array($result)){
+      $id = $res['B_ID'];
+	  $title=$res['B_TITLE'];
+	  $isbn=$res['B_ISBN'];
+	  $author=$res['B_AUTHOR'];
+	  $publisher=$res['B_PUBLISHER'];
+	  $published=$res['B_PUBLISHED'];
+	  $desc=$res['B_DESC'];
+	  $stock=$res['B_QTY'];
+	  $img=$res['B_IMG'];
+	  $price=$res['B_PRICE'];
+      $other=$res['B_OTHER'];
+}
+
+$sql = "SELECT * FROM book_details WHERE b_id=" . escape($var) ;
+$query = query($sql);
+confirm($query);
+
+while($res = fetch_array($query)){
+	if($stock != $_SESSION['b_id' . $var]){
+		$_SESSION['b_id' . $var] +=1;
+	}else{
+		set_message("We only have " . $stock . " Available " . $title);
+	}
+
+}
+}
+        
+
+
+	
+?>
+
+
 <html>
 
 <head>
@@ -185,12 +229,12 @@
         <a class="navbar-brand" href="#" class="link" style="color:white">BookRentals</a>
       </div>
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
-        <li><a href="index.html" style="color:white">Home</a></li>
-        <li><a href="Rent.html" style="color:white">Rent</a></li>
+        <li><a href="index.php" style="color:white">Home</a></li>
+        <li><a href="Rent.php" style="color:white">Rent</a></li>
         <li><a href="#" style="color:white">Return</a></li>
-        <li><a href="DashBoard.html" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
-        <li><a href="Cart.html" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="" style="color:white">Logout</a></li>
+        <li><a href="userprofile.php" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
+        <li><a href="Cart.php" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="logout.php" style="color:white">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -202,8 +246,11 @@
       <div class="row">  
 	    <div class="items">
                         <h1><i class="fa fa-shopping-cart"></i> Shopping Cart</h1>
-                        <h5><a href="Rent.html" style="color:grey">Home</a> <b>></b> <a href="#" style="color:orange">Shopping Cart</a> </h5> 
-                                                   
+                        <h5><a href="Rent.php" style="color:grey">Home</a> <b>></b> <a href="#" style="color:orange">Shopping Cart</a> </h5> 
+                      <?php  display_message();
+                      echo "<br> TRY: " . $_SESSION['b_id' . $var];
+                      
+                      ?>                             
 
         <hr>
   <div class="bonus-products">
@@ -227,7 +274,7 @@
                             <tr>
                                 <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
                                 <td>
-                                    <a href="Book.html">Call Me By Your Name</a> <br>
+                                    <a href="Book.php">Call Me By Your Name</a> <br>
                                     Author: Andre Aciman <br>
                                 </td>
                                 <td>₱100</td>

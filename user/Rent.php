@@ -453,10 +453,10 @@ p.description {
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
         <li><a href="index.php" style="color:white">Home</a></li>
         <li><a href="#bottom" style="color:white;text-decoration: underline">Rent</a></li>
-        <li><a href="#" style="color:white">Return</a></li>
-        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
-        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#" style="color:white">Logout</a></li>
+        <li><a href="checkout.php" style="color:white">Return</a></li>
+        <li><a href="userprofile.php" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
+        <li><a href="cart.php" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="logout.php" style="color:white">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -478,6 +478,7 @@ p.description {
         <li class="sub">
             <a href="#" style="color:#FF8329"><i class="fa fa-book" style="color:#FF8329"></i> GENRES</a>
             <ul>
+            
                <li><a href="#">Comedy</a></li>
                <li><a href="#">Drama</a></li>
                <li><a href="#">Fiction</a></li>

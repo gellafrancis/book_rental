@@ -2,12 +2,16 @@
 	
 	<?php include("functions/init.php");?>
 	<?php
-session_start();
 
-	if(isset($_GET['value'])&&$_GET['value']){
+
+	if(isset($_GET['value']) &&$_GET['value']){
   $var = $_GET['value']; //some_value	
   $query="Select * from book_details where B_ID='$var'";
   $result=mysqli_query($con,$query);
+
+  if (!isset($_SESSION['b_id' . $var])){
+    $_SESSION['b_id' . $var] = 0;
+  }
   
   while($res=mysqli_fetch_array($result)){
 	  $title=$res['B_TITLE'];
@@ -19,9 +23,11 @@ session_start();
 	  $stock=$res['B_QTY'];
 	  $img=$res['B_IMG'];
 	  $price=$res['B_PRICE'];
-	  $other=$res['B_OTHER'];
+      $other=$res['B_OTHER'];
+      
   
-	}}else{
+    }
+}else{
 		header('location:Rent.php');
 	}
 	
@@ -257,7 +263,8 @@ session_start();
 						
                                             <div class="" style="float:right">
                                                     <div>
-								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?><span class="glyphicon glyphicon-shopping-cart"></span> <li><a href='Cart.php?value=".$res1['B_ID']."'>. Add to Cart </a></button>	
+                                                   
+								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?><span class="glyphicon glyphicon-shopping-cart"></span><a href='Cart.php?value=<?php echo $var; ?>'> Add to Cart </a></button>	
                                                                 <button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-credit-card"></span>   Rent</button>
                                                    </div>
                                                 </div> 
