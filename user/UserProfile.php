@@ -1,3 +1,4 @@
+<?php include("functions/init.php"); ?>
 <!DOCTYPE html>
 <html>
 
@@ -427,7 +428,7 @@
                     return price >= minPrice && price <= maxPrice;
                 }).show();
             }
-
+           
         </script>
     </head>
 
@@ -471,10 +472,30 @@
 
                                 <div class="panel panel-warning col-sm-12"  >
                                     <br>
-                                    <br>                     
+                                    <br>       
+                                    <?php
+          
+                                        $email=$_SESSION['email'];
+                                        
+                                        $query="select * from usr_details where u_email='$email'";
+                                        $result=@mysqli_query($con,$query);
+                                        
+                                        while($res=mysqli_fetch_array($result))
+                                        {
+                                
+                                            
+                                            $fn1=$res['u_firstname'];
+                                            $ln2=$res['u_lastname'];
+                                            $email=$res['u_email'];
+                                            $add=$res['u_address'];
+                                            $num=$res['u_contactnum'];
+                                            
+                                        
+                                        }
+                                    ?>              
 
                                     <center><img src="assets/img/nullDP.png" width="10%"></center>
-                                    <center> <h2><b>Alexandrea Falcutila</b></h2></center> 
+                                    <center> <h2><b><?php echo $fn1 . " " . $ln2 ?></b></h2></center> 
                                     <br>
                                     <br>
                                     <div class="col-sm-6">
@@ -487,29 +508,26 @@
                                             <tr>
                                                 <td><b>Name:</b>  
                                                 <td>
-                                                    Alexandrea Falcutila 
+                                                <?php echo $fn1 . " " . $ln2 ?> 
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td><b>Email:</b> 
                                                 <td>
-                                                    alexfalcutila02@gmail.com
+                                                    <?php echo $email?>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Address:</b>   
                                                 <td> 
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut erat pretium, luctus arcu vitae, 
-                                                    tristique purus. Nulla facilisi. Ut nunc est, facilisis sed sem vitae, lacinia consequat dolor. Pellentesque 
-                                                    eu gravida orci, vel dignissim massa. Sed est diam, sodales eget felis vitae, finibus ultricies purus. 
-                                                    Cras non leo feugiat, ultrices velit nec, tempor lectus. Nam quis laoreet augue.
-                                                </td>
+                                                <?php echo $add?>    
+                                                 </td>
                                             </tr>                                
                                             <tr>
                                                 <td><b>Contact Number:</b> 
                                                 <td>
-                                                    098765434567
+                                                <?php echo $num?>
                                                 </td>
                                             </tr>                               
                                         </table>  

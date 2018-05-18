@@ -38,7 +38,7 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgb(255,255,255);"></a></li>
                         </ul>
                         <ul class="nav navbar-nav">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" href="Login.php" style="color:rgba(255,255,255,0.9);"><i class="fa fa-user" style="font-size:20px;"></i></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="UserProfile.php" style="color:rgba(255,255,255,0.9);"><i class="fa fa-user" style="font-size:20px;"></i></a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color:rgba(255,255,255,0.5);">Welcome <?php if(logged_in()){echo $_SESSION['email']; }else{redirect("login.php");} ?>!</a></li>
                         </ul>
                 </div>
