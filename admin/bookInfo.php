@@ -696,7 +696,7 @@ function myVal() {
                                 <tr>
                                     <td><b>Title:</b> </td>  
                                     <td>
-                                        <input class="form-control" type="text" name="btitle" value="<?php echo $_SESSION['title'];?>" placeholder="Book Title" required="required" id="btitle/>
+                                        <input class="form-control" type="text" name="btitle" value="<?php echo $_SESSION['title'];?>" placeholder="Book Title" required="required" id="btitle"/>
                                    </td>
                                 </tr>
                                  <tr>
@@ -705,7 +705,7 @@ function myVal() {
                                         <input class="form-control" type="text" name="author" value="<?php echo $_SESSION['author'];?>" placeholder="Author" required="required" id="author" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
                                    </td>
                                 </tr>   
-									<tr>
+								<tr>
                                     <td><b>Genre:</b> </td>  
                                     <td>
 										<select name="genre" id="genre" required>
@@ -723,7 +723,8 @@ function myVal() {
 										</select>
 								   </td>
                                 </tr>
-								<tr>
+                                <tr>
+								
                                     <td><b>Publisher:</b> </td>  
                                     <td>
                                         <input class="form-control" type="text" name="publisher" value="<?php echo $_SESSION['publisher'];?>" placeholder="Publisher" required="required" id="publisher" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>

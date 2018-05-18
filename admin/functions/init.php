@@ -5,7 +5,7 @@ session_start();
 
 include("functions.php");
 include("db.php");
-
+date_default_timezone_set('Asia/Manila');
 
 
 //test if there's a connection

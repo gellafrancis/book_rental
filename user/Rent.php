@@ -634,7 +634,7 @@ p.description {
                 </div>
 
                         <center><span class="ocarousel_pagination_current"></span>
-                /
+                
                 <span class="ocarousel_pagination_total"></span>
                 <div class="ocarousel_indicators"></div> </center>
                 <br />
