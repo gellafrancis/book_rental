@@ -608,8 +608,17 @@ function myVal() {
 										<select name="genre" id="genre" required>
                                         
 										<option value="" selected="selected" disabled >Select Genre</option>
+							
+										<option value="Comedy">Comedy</option>
+										<option value="Drama">Drama</option>
+										<option value="Fiction">Fiction</option>
+										<option value="History">History</option>
+										<option value="Horror">Horror</option>
+										<option value="Mystery">Mystery</option>
+										<option value="Psych">Psych</option>	
 										<option value="Romance">Romance</option>
-										<option value="Romance">Fiction</option>
+										<option value="Science">Science</option>
+										
 										</select>
 								   </td>
                                 </tr>

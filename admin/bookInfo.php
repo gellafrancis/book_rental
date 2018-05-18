@@ -602,45 +602,45 @@ function myVal() {
               <table width="100%" class="warning">
 								
 	                       <tr>
-                                    <td><b>ISBN</b>  
+                                    <td><b>ISBN:</b> </td>  
                                     <td>
                                      <?php echo $_SESSION['isbn']?>
                                     </td>
                                 </tr>
   
                                 <tr>
-                                    <td><b>Title:</b> 
+                                    <td><b>Title:</b> </td>  
                                     <td>
                                         <?php echo $_SESSION['title']?> 
                                    </td>
                                 </tr>
                                  <tr>
-                                    <td><b>Author:</b> 
+                                    <td><b>Author:</b> </td>  
                                     <td>
                                          <?php echo $_SESSION['author']?>
                                    </td>
                                 </tr>  
                                 <tr>
-                                    <td><b> Publisher:</b> 
+                                    <td><b> Publisher:</b> </td>  
                                     <td>
                                          <?php echo $_SESSION['publisher']?>
                                    </td>
                                 </tr>                              
                                 <tr>
-                                    <td><b>Date Published:</b> 
+                                    <td><b>Date Published:</b> </td>  
                                     <td>
                                          <?php echo $_SESSION['datepub']?>
                                     </td> 
                                 </tr> 
                                 
                                 <tr>
-                                 <td><b>Short Summary:</b>   
+                                 <td><b>Short Summary:</b>   </td>  
                                 <td> 
                                          <?php echo $_SESSION['shortsum']?>
                                 </td>
                                 </tr>
                                  <tr>
-                                 <td><b>Other Description:</b>   
+                                 <td><b>Other Description:</b>   </td>  
                                 <td> 
                                         <?php echo $_SESSION['description']?>
         
@@ -648,7 +648,7 @@ function myVal() {
                                 </tr>                               
                                 
                                 <tr>
-                                  <td><b>Price:</b>  
+                                  <td><b>Price:</b>  </td>  
                                     <td>
                                     ‎₱<?php echo $_SESSION['price']?>
                                     </td>
@@ -680,7 +680,7 @@ function myVal() {
                 Please enter the required values.
                 <table class="table table-bordered">
                        <tr>
-                                    <td><b>ISBN:</b>  
+                                    <td><b>ISBN:</b>  </td>  
                                     <td>
                                      <input class="form-control" type="number" value="<?php echo $_SESSION['isbn'];?>" placeholder="ISBN" required="required" id="isbn" disabled/>  
                                      <input type="hidden" name="isbn" value="<?php echo $_SESSION['isbn'];?>">
@@ -688,37 +688,44 @@ function myVal() {
                                 </tr>
   
                                 <tr>
-                                    <td><b>Title:</b> 
+                                    <td><b>Title:</b> </td>  
                                     <td>
                                         <input class="form-control" type="text" name="btitle" value="<?php echo $_SESSION['title'];?>" placeholder="Book Title" required="required" id="btitle" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
                                    </td>
                                 </tr>
                                  <tr>
-                                    <td><b>Author:</b> 
+                                    <td><b>Author:</b> </td>  
                                     <td>
                                         <input class="form-control" type="text" name="author" value="<?php echo $_SESSION['author'];?>" placeholder="Author" required="required" id="author" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
                                    </td>
                                 </tr>   
 									<tr>
-                                    <td><b>Genre:</b> 
+                                    <td><b>Genre:</b> </td>  
                                     <td>
 										<select name="genre" id="genre" required>
                                         
 										<option value="" disabled >Select Genre</option>
-										<option value="Romance" <?php if($_SESSION['genre']=="Romance"){ echo "selected";}?>>Romance</option>
+										<option value="Comedy" <?php if($_SESSION['genre']=="Comedy"){ echo "selected";}?>>Comedy</option>
+										<option value="Drama" <?php if($_SESSION['genre']=="Drama"){ echo "selected";}?>>Drama</option>
 										<option value="Fiction" <?php if($_SESSION['genre']=="Fiction"){ echo "selected";}?>>Fiction</option>
+										<option value="History" <?php if($_SESSION['genre']=="History"){ echo "selected";}?>>History</option>
+										<option value="Horror" <?php if($_SESSION['genre']=="Horror"){ echo "selected";}?>>Horror</option>
+										<option value="Mystery" <?php if($_SESSION['genre']=="Mystery"){ echo "selected";}?>>Mystery</option>
+										<option value="Psych" <?php if($_SESSION['genre']=="Psych"){ echo "selected";}?>>Psych</option>
+										<option value="Romance" <?php if($_SESSION['genre']=="Romance"){ echo "selected";}?>>Romance</option>
+										<option value="Science" <?php if($_SESSION['genre']=="Science"){ echo "selected";}?>>Science</option>
 										</select>
 								   </td>
                                 </tr>
 								<tr>
-                                    <td><b>Publisher:</b> 
+                                    <td><b>Publisher:</b> </td>  
                                     <td>
                                         <input class="form-control" type="text" name="publisher" value="<?php echo $_SESSION['publisher'];?>" placeholder="Publisher" required="required" id="publisher" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
                                    </td>
                                 </tr> 
 								
                                 <tr>
-                                    <td><b>Date Published:</b> 
+                                    <td><b>Date Published:</b> </td>  
                                     <td>
                                         <input  name="bdo" type="date"  onChange="showAge()" id="bdo" value="<?php echo $_SESSION['datepub']?>"class="form-control" type="date" required="required" style="width:200px"/> 
                                     </div> 
@@ -726,14 +733,14 @@ function myVal() {
                                 </tr> 
                                 
                                 <tr>
-                                 <td><b>Short Summary:</b>   
+                                 <td><b>Short Summary:</b>  </td>   
                                 <td> 
                                     <textarea class="form-control" name="summary"   id="summary"   ><?php echo $_SESSION['shortsum'];?></textarea>
         
                                 </td>
                                 </tr>
                                  <tr>
-                                 <td><b>Other Description:</b>   
+                                 <td><b>Other Description:</b>   </td>  
                                 <td> 
                                     <textarea class="form-control" name="desc"   id="desc"   ><?php echo $_SESSION['description'];?></textarea>
         
@@ -741,13 +748,13 @@ function myVal() {
                                 </tr>                               
                                 
                                 <tr>
-                                  <td><b>Price</b>  
+                                  <td><b>Price</b>  </td>  
                                     <td>
                                      <input class="form-control" type="number" name="price" value="<?php echo $_SESSION['price'];?>" placeholder="0.00" required="required" id="price" style="width:100px" pattern="^\d*(\.\d{0,2})?$"/>  
                                     </td>
                                 </tr>
 								<tr>
-                                  <td><b>Quantity</b>  
+                                  <td><b>Quantity</b>  </td>  
                                     <td>
                                      <input class="form-control" type="number" name="quantity" value="<?php echo $_SESSION['quantity'];?>" required="required" id="quantity" style="width:100px" pattern="^\d*(\.\d{0,2})?$"/>  
                                     </td>

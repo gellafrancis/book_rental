@@ -400,45 +400,38 @@
           <hr>
           <form method="POST" action="BookList.php"> 
         <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
-<thead>
+			<thead>
 	    				<tr class="warning">
 	      				<th scope="col"><center>Book ID</center></th>						
 				  	    <th scope="col"><center>ISBN</center></th> 
 	      				<th scope="col"><center>Title</center></th>
 	      				<th scope="col"><center>Author</center></th>
 	      				<th scope="col"><center>Date Registered</center></th>
-                                        <th scope="col"><center>Stock</center></th>
-	      				<th scope="col" colspan="2"><center>Action</center></th>
+                        <th scope="col"><center>Stock</center></th>
+	      				<th scope="col"><center>Action</center></th>
 
 	    				</tr>
   				</thead>
   				<tbody>
           <?php 
 				$query="Select * from book_details";
-				
+				$returnstring = "";
 				$result=@mysqli_query($con,$query);
 				
 				while($res=mysqli_fetch_array($result)){
-					echo "<tr>";
-					echo "<td>".$res['B_ID']."</td>";
-					echo "<td>".$res['B_ISBN']."</td>";
-					echo "<td>".$res['B_TITLE']."</td>";
-					echo "<td>".$res['B_AUTHOR']."</td>";
-					echo "<td>".$res['B_REGISTERED']."</td>";
-					echo "<td>".$res['B_QTY']."</td>";
-					echo "<td><center><button class='btn btn-warning btn-block' name='view' value='".$res['B_ID']."'>View</button></center></td>";
-          echo "<td><center><button class='btn btn-danger btn-block' name='delete' value='".$res['B_ISBN']."'>Delete</button></center></td>";
-					
-          
+		       echo $returnstring =  
+    			"<tr>
+    		        <td>" .$res['B_ID']."</td>			
+    		        <td>" .$res['B_ISBN']."</td>
+    		      	<td>" .$res['B_TITLE']."</td>
+    				<td>" .$res['B_AUTHOR']."</td>
+    		       	<td>" .$res['B_REGISTERED']."</td>
+    				<td>"  .$res['B_QTY']."</td>
+    		        <td><center> <button class='btn btn-warning btn-block' name='view' value='".$res['B_ID']."'>View</button><button class='btn btn-danger btn-block' name='delete' value='".$res['B_ISBN']."'>Delete</button></center></td>
+    		    </tr>";
 				}
-			
 				?>
-					</tr>				
   				</tbody>
-				
-				
-
-		
 				
                             </table>
                 <hr>
