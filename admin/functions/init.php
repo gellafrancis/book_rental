@@ -7,6 +7,7 @@ include("functions.php");
 include("db.php");
 
 
+
 //test if there's a connection
 if ($con){
   //echo "You are connected";

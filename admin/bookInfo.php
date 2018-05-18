@@ -1,5 +1,6 @@
 
 <?php include("functions/init.php");
+date_default_timezone_set('Asia/Manila');
 book_checker();
 ?>
     
@@ -19,7 +20,7 @@ book_checker();
 				   $_SESSION['shortsum']=$res['B_OTHER'];
 				   $_SESSION['description']=$res['B_DESC'];
 				   $_SESSION['price']=$res['B_PRICE'];
-				   $_SESSION['genre']=$res['B_QTY'];
+				   $_SESSION['genre']=$res['B_GENRE'];
 				   $_SESSION['publisher']=$res['B_PUBLISHER'];
 				   $_SESSION['quantity']=$res['B_QTY'];
 			   $_SESSION['image']=$res['B_IMG'];
@@ -50,7 +51,6 @@ book_checker();
 				  
 				  $getid="select B_ID from book_details where B_ISBN='$isbn' LIMIT 1";
                   $res=@mysqli_query($con,$getid);
-                  date_default_timezone_set('Asia/Manila');
                   $date = date('Y-m-d\TH:i:s.u');  
                   $activity = "EDIT Book with an ISBN#: " . $isbn;
                   $sql = "INSERT INTO log_history(log_date,  log_activity)";
@@ -614,6 +614,12 @@ function myVal() {
                                         <?php echo $_SESSION['title']?> 
                                    </td>
                                 </tr>
+                                <tr>
+                                    <td><b>Genre:</b> </td>  
+                                    <td>
+                                        <?php echo $_SESSION['genre']?> 
+                                   </td>
+                                </tr>
                                  <tr>
                                     <td><b>Author:</b> </td>  
                                     <td>
@@ -690,7 +696,7 @@ function myVal() {
                                 <tr>
                                     <td><b>Title:</b> </td>  
                                     <td>
-                                        <input class="form-control" type="text" name="btitle" value="<?php echo $_SESSION['title'];?>" placeholder="Book Title" required="required" id="btitle" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
+                                        <input class="form-control" type="text" name="btitle" value="<?php echo $_SESSION['title'];?>" placeholder="Book Title" required="required" id="btitle/>
                                    </td>
                                 </tr>
                                  <tr>
