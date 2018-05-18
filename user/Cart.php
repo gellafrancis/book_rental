@@ -3,6 +3,7 @@
 
 <?php
 
+
 if(isset($_GET['value'])&&$_GET['value']){
 // values
   $var = $_GET['value']; //some_value	
@@ -36,6 +37,82 @@ while($res = fetch_array($query)){
 
 }
 }
+if(isset($_GET['remove'])){
+    $_SESSION['b_id' . $_GET['remove']]--;
+    if ( $_SESSION['b_id' . $_GET['remove']] < 1){
+        redirect("cart.php");
+     }
+         
+}
+    
+     if(isset($_GET['delete'])){
+     $_SESSION['b_id' . $_GET['delete']] = '0';
+        redirect("cart.php");
+     
+    }
+
+
+function cart(){
+    $sql = "SELECT * FROM book_details";
+    $query = query($sql);
+    confirm($query);
+
+    while($res = fetch_array($query)){
+        $id = $res['B_ID'];
+        $title=$res['B_TITLE'];
+        $isbn=$res['B_ISBN'];
+        $author=$res['B_AUTHOR'];
+        $publisher=$res['B_PUBLISHER'];
+        $published=$res['B_PUBLISHED'];
+        $desc=$res['B_DESC'];
+        $stock=$res['B_QTY'];
+        $img=$res['B_IMG'];
+        $price=$res['B_PRICE'];
+        $other=$res['B_OTHER'];
+        
+        if (!isset($_SESSION['b_id' . $id])){
+            $_SESSION['b_id' . $id] = 0;
+          }
+        if(isset($_SESSION['b_id' . $id])){
+            $qty_in_session =  $_SESSION['b_id' . $id] ;
+        }else{
+            $qty_in_session = '0';
+        }
+
+
+$book = <<< HEREDOC
+
+<tr>
+<td><img src="../admin/{$img}" width="70"></td>
+<td>
+    <a href="Book.php">{$title}</a> <br>
+    Author: {$author} <br>
+</td>
+<td>{$price}</td>
+<td> {$qty_in_session}  </td>
+<td>
+<a href="cart.php?value={$id}">Add</a>
+<a href="cart.php?remove={$id}">Remove</a>
+<a href="cart.php?delete={$id}">Delete</a>
+</button></td>
+
+
+
+</tr>
+
+HEREDOC;
+
+echo $book;
+
+
+
+    }
+
+}
+ 
+             
+    
+
         
 
 
@@ -248,7 +325,12 @@ while($res = fetch_array($query)){
                         <h1><i class="fa fa-shopping-cart"></i> Shopping Cart</h1>
                         <h5><a href="Rent.php" style="color:grey">Home</a> <b>></b> <a href="#" style="color:orange">Shopping Cart</a> </h5> 
                       <?php  display_message();
-                      echo "<br> TRY: " . $_SESSION['b_id' . $var];
+                       
+
+                            
+                          
+                        
+                       
                       
                       ?>                             
 
@@ -267,37 +349,12 @@ while($res = fetch_array($query)){
                                 <th><b>Description</b></th>
                                 <th><b>Price</b></th>
                                 <th><b>Quantity</b></th>
-                                <th></th>
+                                <th><Action/th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
-                                <td>
-                                    <a href="Book.php">Call Me By Your Name</a> <br>
-                                    Author: Andre Aciman <br>
-                                </td>
-                                <td>₱100</td>
-                                <td>1</td>
-                                <td><button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button></td>
-                               
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td><img src="assets/img/BookCover/The Ones Who Walk Away from Omelas.jpg" width="70"></td>
-                                <td>
-                                    <a href="#">The Ones Who Walk Away from Omelas</a> <br>
-                                    Author: Ursula K. Le Guin<br>
-                                </td>
-                                <td>₱100</td>
-                                <td>1</td>  
-                                 <td><button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button></td>                               
-                            </tr>
+                        <?php cart(); ?>
+                            
                         </tbody>
                     </table>
                     
