@@ -4,7 +4,7 @@ ob_start(); //output buffering use for redirection
 session_start();
 
 include("functions.php");
-//include("ajax_functions.php");
+include("functioncart.php");
 include("db.php");
 
 

@@ -257,7 +257,7 @@ session_start();
 						
                                             <div class="" style="float:right">
                                                     <div>
-								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart</button>	
+								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?><span class="glyphicon glyphicon-shopping-cart"></span> <li><a href='Cart.php?value=".$res1['B_ID']."'>. Add to Cart </a></button>	
                                                                 <button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-credit-card"></span>   Rent</button>
                                                    </div>
                                                 </div> 

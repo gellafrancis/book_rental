@@ -532,22 +532,7 @@ p.description {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
-                                <td>
-                                    <a href="Book.php" style="color:#FF8329">Call Me By Your Name</a> <br>
-                                    Author: Andre Aciman <br>
-                                    Price: ₱100
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/img/BookCover/The Ones Who Walk Away from Omelas.jpg" width="70"></td>
-                                <td>
-                                    <a href="#" style="color:#FF8329">The Ones Who Walk Away from Omelas</a> <br>
-                                    Author: Ursula K. Le Guin<br>
-                                    Price: ₱100
-                                </td>
-                            </tr>
+                
 							
 							<?php 
 							$query="select * from book_details";
