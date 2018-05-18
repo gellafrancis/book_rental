@@ -650,7 +650,7 @@ function myVal() {
                                 <tr>
                                   <td><b>Price:</b>  
                                     <td>
-                                        $  <?php echo $_SESSION['price']?>
+                                    ‎₱<?php echo $_SESSION['price']?>
                                     </td>
                                 </tr>
                                 <tr>

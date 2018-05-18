@@ -24,15 +24,7 @@ function display_message(){
     unset($_SESSION['message']);
   }
 }
-
-function token_generator(){
-  $token = $_SESSION['token'] = md5(uniqid(mt_rand(), true)); 
-  // produce id, mt_rand() prove random, true more bigger 
-  //uniqid - relative to system time yung first then not random after that
-  // true - longer
-  //md5 - random
-  return $token;
-}                                      
+                                   
 
 function send_email($email, $subject, $msg, $headers){
   return mail($email, $subject, $msg, $headers);	
