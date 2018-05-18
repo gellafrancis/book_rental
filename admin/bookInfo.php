@@ -30,16 +30,16 @@ book_checker();
 			   
 			   if(isset($_POST['save'])){
 				   
-				$isbn=$_POST['isbn'];
-				 $title=$_POST['btitle'];
-				 $author=$_POST['author'];
-				 $genre=$_POST['genre'];
-				 $publisher=$_POST['publisher'];
-				 $bdo=$_POST['bdo'];
-				 $summary=$_POST['summary'];
-				 $desc=$_POST['desc'];
-				 $price	=$_POST['price'];
-				 $quantity=$_POST['quantity'];   
+				$isbn=escape($_POST['isbn']);
+				 $title=escape($_POST['btitle']);
+				 $author=escape($_POST['author']);
+				 $genre=escape($_POST['genre']);
+				 $publisher=escape($_POST['publisher']);
+				 $bdo=escape($_POST['bdo']);
+				 $summary=escape($_POST['summary']);
+				 $desc=escape($_POST['desc']);
+				 $price	=escape($_POST['price']);
+				 $quantity=escape($_POST['quantity']);   
 				 
 				
 				  
@@ -720,7 +720,7 @@ function myVal() {
                                 <tr>
                                     <td><b>Date Published:</b> 
                                     <td>
-                                        <input  name="bdo" type="date"  onChange="showAge()" id="bdo" value="<?php echo $_SESSION['datepub']?>"class="form-control" type="date"  max="1998-12-31" min="1918-01-01" required="required" style="width:200px"/> 
+                                        <input  name="bdo" type="date"  onChange="showAge()" id="bdo" value="<?php echo $_SESSION['datepub']?>"class="form-control" type="date" required="required" style="width:200px"/> 
                                     </div> 
                                     </td> 
                                 </tr> 
@@ -728,14 +728,14 @@ function myVal() {
                                 <tr>
                                  <td><b>Short Summary:</b>   
                                 <td> 
-                                    <textarea class="form-control" name="summary"   id="summary"  maxlength="800" ><?php echo $_SESSION['shortsum'];?></textarea>
+                                    <textarea class="form-control" name="summary"   id="summary"   ><?php echo $_SESSION['shortsum'];?></textarea>
         
                                 </td>
                                 </tr>
                                  <tr>
                                  <td><b>Other Description:</b>   
                                 <td> 
-                                    <textarea class="form-control" name="desc"   id="desc"  maxlength="800" ><?php echo $_SESSION['description'];?></textarea>
+                                    <textarea class="form-control" name="desc"   id="desc"   ><?php echo $_SESSION['description'];?></textarea>
         
                                 </td>
                                 </tr>                               

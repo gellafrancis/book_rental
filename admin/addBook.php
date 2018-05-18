@@ -8,17 +8,17 @@
 
   <?php if(isset($_POST['save'])){
 	  
-				 $isbn=$_POST['isbn'];
-				 $title=$_POST['btitle'];
-				 $author=$_POST['author'];
-				 $genre=$_POST['genre'];
-				 $publisher=$_POST['publisher'];
-				 $bdo=$_POST['bdo'];
-				 $summary=$_POST['summary'];
-				 $desc=$_POST['desc'];
-				 $price	=$_POST['price'];
-				 $quantity=$_POST['quantity'];
-				 $dateadd=date("Y/m/d");
+				 $isbn=escape($_POST['isbn']);
+				 $title=escape($_POST['btitle']);
+				 $author=escape($_POST['author']);
+				 $genre=escape($_POST['genre']);
+				 $publisher=escape($_POST['publisher']);
+				 $bdo=escape($_POST['bdo']);
+				 $summary=escape($_POST['summary']);
+				 $desc=escape($_POST['desc']);
+				 $price	=escape($_POST['price']);
+				 $quantity=escape($_POST['quantity']);
+				 $dateadd=escape(date("Y/m/d"));
 				 
 				 
 				 $check="select B_ISBN from book_details where B_ISBN='$isbn'";
@@ -623,7 +623,7 @@ function myVal() {
                                 <tr>
                                     <td><b>Date Published:</b> 
                                     <td>
-                                        <input  name="bdo" type="date"  onChange="showAge()" id="bdo" class="form-control" type="date"  max="1998-12-31" min="1918-01-01" required="required" style="width:200px"/> 
+                                        <input  name="bdo" type="date"  onChange="showAge()" id="bdo" class="form-control" type="date" required="required" style="width:200px"/> 
                                     </div> 
                                     </td> 
                                 </tr> 
@@ -631,14 +631,14 @@ function myVal() {
                                 <tr>
                                  <td><b>Short Summary:</b>   
                                 <td> 
-                                    <textarea class="form-control" name="summary"   id="summary"  maxlength="800" ></textarea>
+                                    <textarea class="form-control" name="summary"   id="summary"  ></textarea>
         
                                 </td>
                                 </tr>
                                  <tr>
                                  <td><b>Other Description:</b>   
                                 <td> 
-                                    <textarea class="form-control" name="desc"   id="desc"  maxlength="800" ></textarea>
+                                    <textarea class="form-control" name="desc"   id="desc"  ></textarea>
         
                                 </td>
                                 </tr>                               
