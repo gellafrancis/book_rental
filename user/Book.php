@@ -255,7 +255,10 @@
 																		}
                                                                     }?>
                                                                 </select></h5>
+                                                        
                                                         <h5><b>Price:</b> <span class="itemPrice">₱ <?php echo $price;?></span></h5>
+
+                                                    
 							</div>
                                                     
 

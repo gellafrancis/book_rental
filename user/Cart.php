@@ -53,6 +53,10 @@ if(isset($_GET['remove'])){
 
 
 function cart(){
+        // foreach($_SESSION as $name => $value){
+            
+        //     if(substr($name, 0, 4) == "b_id"){
+                
     $sql = "SELECT * FROM book_details";
     $query = query($sql);
     confirm($query);
@@ -69,18 +73,10 @@ function cart(){
         $img=$res['B_IMG'];
         $price=$res['B_PRICE'];
         $other=$res['B_OTHER'];
-        
-        if (!isset($_SESSION['b_id' . $id])){
-            $_SESSION['b_id' . $id] = 0;
-          }
-        if(isset($_SESSION['b_id' . $id])){
-            $qty_in_session =  $_SESSION['b_id' . $id] ;
-        }else{
-            $qty_in_session = '0';
-        }
-
-
-$book = <<< HEREDOC
+        $qty_in_session =  isset($_SESSION['b_id' . $id]) ? $_SESSION['b_id' . $id] : "";
+        $total_price = (float) $qty_in_session * $price;
+        if (!empty($qty_in_session)){
+        $book = <<< HEREDOC
 
 <tr>
 <td><img src="../admin/{$img}" width="70"></td>
@@ -88,7 +84,7 @@ $book = <<< HEREDOC
     <a href="Book.php">{$title}</a> <br>
     Author: {$author} <br>
 </td>
-<td>{$price}</td>
+<td>{$total_price}</td>
 <td> {$qty_in_session}  </td>
 <td>
 <a href="cart.php?value={$id}">Add</a>
@@ -103,12 +99,15 @@ $book = <<< HEREDOC
 HEREDOC;
 
 echo $book;
-
-
-
-    }
-
 }
+}       
+            
+            }
+        
+ 
+
+
+ 
  
              
     
@@ -362,7 +361,7 @@ echo $book;
            </div>
             <hr>
              <div style="float:left"> 
-                 <a>Continue shopping</a>
+                 <a href="rent.php">Continue shopping</a>
              </div>
             <div style="float:right"> 
                 <table width="200">
