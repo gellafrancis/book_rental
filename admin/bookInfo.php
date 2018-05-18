@@ -1,6 +1,6 @@
 
 <?php include("functions/init.php");
-date_default_timezone_set('Asia/Manila');
+
 book_checker();
 ?>
     

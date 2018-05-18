@@ -270,7 +270,7 @@ function pdf_maker(){
 }
 
 
-// CART NAMAN!!!
+
 
 
  

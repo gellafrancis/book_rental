@@ -364,7 +364,7 @@
                         {
                           echo "<tr>";
                           echo "<td>".$row['u_id']."</td>". "" . "<td>".$row['u_lastname']."</td>"."<td>".$row['u_firstname']."</td>"."<td>".$row['u_contactnum']."</td>";
-                          echo "<td><center><button class='btn btn-warning btn-sm' name = 'adminview' value = '".$row['u_id']."'>View</button></center></td>";  
+                          echo "<td><center><button class='btn btn-warning btn-block' name = 'adminview' value = '".$row['u_id']."'>View</button></center></td>";  
           
                         }
             ?>

@@ -1,9 +1,9 @@
 	<!DOCTYPE html>
 	
-	
+	<?php include("functions/init.php");?>
 	<?php
 session_start();
-require 'D:/xampp/htdocs/ITELEC/connect.php';
+
 	if(isset($_GET['value'])&&$_GET['value']){
   $var = $_GET['value']; //some_value	
   $query="Select * from book_details where B_ID='$var'";
