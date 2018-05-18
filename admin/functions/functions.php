@@ -261,7 +261,18 @@ function admin_checker(){
   }
 }
 
+//PDF MAKER
+function pdf_maker(){
+  if(isset($_POST['export'])){
+    redirect("pdf.php"); 
+  }
+
+}
+
+
 // CART NAMAN!!!
+
+
  
  
  

@@ -362,7 +362,7 @@
   				</tbody>
                             </table>
                 <hr>
-			<button  type="submit" class=" btn-warning btn btn-lg" name="export" ><font>Export Table</font></button><br><br><br>
+			<button  type="submit" class=" btn-warning btn btn-lg" name="export"><font>Export Table</font></button><br><br><br>
            </form> 
     </div></div>
   </body> 
