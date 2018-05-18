@@ -334,7 +334,7 @@
           <h1><strong>Administrator List</strong></h1>
           <hr>
             <!--  -->
-            <form method="POST" action="AdminList.php"> 
+            <form method="POST"> 
                             <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
          <?php
 
@@ -373,11 +373,17 @@
   				</tbody>
                             </table>
                 <hr>
-			<button  type="submit" class=" btn-warning btn btn-lg" name="add" style="float:right;" ><font>Add Administrator</font></button>
-			<button  type="submit" class=" btn-warning btn btn-lg" name="export" ><font>Export Table</font></button><br><br><br>
+			<button  type="submit" class=" btn-warning btn btn-lg" name="add" value="add" style="float:right;" ><font>Add Administrator</font></button>
+
            </form> 
     </div></div>
   </body> 
  
     </script>
     </html>
+
+    <?php 
+    if(isset($_POST['add'])){
+      redirect("addadmin.php"); 
+    }
+    ?>
