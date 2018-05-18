@@ -255,7 +255,7 @@
 																		}
                                                                     }?>
                                                                 </select></h5>
-                                                        
+<!-- //asda -->
                                                         <h5><b>Price:</b> <span class="itemPrice">₱ <?php echo $price;?></span></h5>
 
                                                     
