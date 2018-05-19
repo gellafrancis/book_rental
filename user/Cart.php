@@ -2,7 +2,7 @@
 <?php include("functions/init.php");?>
 
 <?php
-
+  
 
 if(isset($_GET['value'])&&$_GET['value']){
 // values
@@ -28,9 +28,20 @@ $sql = "SELECT * FROM book_details WHERE b_id=" . escape($var) ;
 $query = query($sql);
 confirm($query);
 
+
 while($res = fetch_array($query)){
 	if($stock != $_SESSION['b_id' . $var]){
-		$_SESSION['b_id' . $var] +=1;
+
+        if(isset($_GET['quan'])){
+        
+            $qtie = $_GET['quan'];
+		$_SESSION['b_id' . $var] += $qtie;
+      
+           
+          }else{
+            $_SESSION['b_id' . $var] +=1;
+          }
+
 	}else{
 		set_message("We only have " . $stock . " Available " . $title);
 	}
@@ -52,15 +63,13 @@ if(isset($_GET['remove'])){
     }
 
 
+
 function cart(){
-        // foreach($_SESSION as $name => $value){
-            
-        //     if(substr($name, 0, 4) == "b_id"){
-                
     $sql = "SELECT * FROM book_details";
     $query = query($sql);
     confirm($query);
-
+    $GLOBALS['super_total'] =0.00;
+    
     while($res = fetch_array($query)){
         $id = $res['B_ID'];
         $title=$res['B_TITLE'];
@@ -75,6 +84,13 @@ function cart(){
         $other=$res['B_OTHER'];
         $qty_in_session =  isset($_SESSION['b_id' . $id]) ? $_SESSION['b_id' . $id] : "";
         $total_price = (float) $qty_in_session * $price;
+       
+        if (isset($total_price)){
+        $GLOBALS['super_total'] +=(float) $qty_in_session * $price;
+        }
+       
+        
+        
         if (!empty($qty_in_session)){
         $book = <<< HEREDOC
 
@@ -99,10 +115,16 @@ function cart(){
 HEREDOC;
 
 echo $book;
+
+
+
+
+
+
 }
 }       
             
-            }
+}
         
  
 
@@ -371,7 +393,7 @@ echo $book;
                             <font size="2px" style="padding-right: 5%;color:grey"> SUBTOTAL: </font>
                         </td>
                         <td>
-                            <font size="3px" style="color:orange;">₱200.00</font>
+                            <font size="3px" style="color:orange;">₱ <?php echo $super_total; ?></font>
                         </td>                        
                     </tr>
                     <tr>
@@ -379,7 +401,7 @@ echo $book;
                             <font size="2px" style="padding-right: 5%;color:grey"> SHIPPING: </font> 
                         </td>
                         <td>
-                            <font size="3px" style="color:orange;">₱80.00</font>
+                            <font size="3px" style="color:orange;">₱  <?php echo $super_total_shipping; ?></font>
                         </td>                        
                     </tr>
                     <hr>     

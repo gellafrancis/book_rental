@@ -200,14 +200,7 @@
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
-                <div class="input-group stylish-input-group input-append">
-                    <input type="text" class="form-control"  placeholder="Search books by ISBN, Author, Title ..." >
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    </span>
-                </div>
+                
             </div>
         </div>
 	</div>
@@ -241,6 +234,7 @@
                                                             </p>
                                                             <br>
                                                             <h4>Stock: <input type="text" name="stock" value="<?php echo $stock?>" disabled="disabled" class="form-control" style="width: 200px;"/> </h4>
+                                            <form method="GET" action="Cart.php"> 
                                                              <h5>Quantity: <select name="quan" class="form-control" style="width:200px">
                                                                     
 																	<?php for($i=1;$i<=$stock;$i++){
@@ -258,19 +252,20 @@
 <!-- //asda -->
                                                         <h5><b>Price:</b> <span class="itemPrice">₱ <?php echo $price;?></span></h5>
 
-                                                    
+                                                    <input type="hidden" name="value" value="<?php echo $var; ?>">
 							</div>
-                                                    
+                          
 
 						</div>
 						
                                             <div class="" style="float:right">
                                                     <div>
                                                    
-								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?><span class="glyphicon glyphicon-shopping-cart"></span><a href='Cart.php?value=<?php echo $var; ?>'> Add to Cart </a></button>	
+								<button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>	
                                                                 <button class="btn btn-lg btn-add-to-cart" <?php if($stock==0){echo "disabled";}?>><span class="glyphicon glyphicon-credit-card"></span>   Rent</button>
                                                    </div>
                                                 </div> 
+                                                </form>
 				</div>
 			</div>
 		</div>
