@@ -413,7 +413,7 @@ echo $book;
                             <font size="5px" style="padding-right: 5%;color:grey"><b> TOTAL: </b></font>
                         </td>
                         <td>
-                            <font size="5px" style="color:orange;"> <b> ₱280.00 </b></font>
+                            <font size="5px" style="color:orange;"> <b> <?php  echo $super_total_shipping + $super_total;  ?> </b></font>
                         </td>                        
                     </tr>
                     <hr>     
