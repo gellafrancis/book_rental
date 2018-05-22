@@ -76,10 +76,16 @@
       function drawChart1() {
         var data = google.visualization.arrayToDataTable([
           ['Genre', 'Speakers (in millions)'],
-          ['Book1',  23.00],
-          ['Book2',  1.66],
-          ['Book3', 0.316],
-          ['Book4', 0.0791]
+		  <?php 	
+		  $query="Select * from  usr_details where u_type='user'";
+		  $result=@mysqli_query($con,$query);
+		  $user=mysqli_num_rows($result);
+        echo "['User',". $user."],";
+        $query="Select * from  usr_details where u_type='admin'";
+		  $result=@mysqli_query($con,$query);
+		  $admin=mysqli_num_rows($result);
+		  echo "['Admin',". $admin."],";
+		  ?>
         ]);
 
       var options = {
@@ -454,7 +460,7 @@
         </div>
         <div class="panel panel-default col-sm-6" style="background-color:#dff0d8">
             <div class="panel-body">
-                 <center><h3 style="color:#484848"><b>Active Users</b></h3></center>
+                 <center><h3 style="color:#484848"><b>	Users</b></h3></center>
             <center><div id="piechart1" style="width: 600px; height: 500px;"></div></center>
             </div>
         </div>
