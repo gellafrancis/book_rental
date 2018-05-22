@@ -391,28 +391,58 @@
         <div class="panel panel-default col-sm-3" style="background-color:#66b92e;color:white;">
             <div class="panel-body" style="background-color:#66b92e;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                 <h4>TOTAL BOOKS RENTED</h4><br>
-                <font size="5">780</font>
+				<?php 
+				$sum="Select sum(RENT_COUNT) from book_details";
+				$result=@mysqli_query($con,$sum);
+				$res=mysqli_fetch_assoc($result);
+				$rent=$res['sum(RENT_COUNT)'];
+				
+				?>
+				
+				
+                <font size="5"><?php echo $rent ?></font>
                 <hr>
             </div>
         </div> 
         <div class="panel panel-default col-sm-3" style="background-color:#2298f1;color:white;">
             <div class="panel-body" style="background-color:#2298f1;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                 <h4>TOTAL NO. OF BOOKS</h4><br>
-                <font size="5"><b>100</b></font>
+				<?php 
+				$query="select * from book_details";
+				$result=@mysqli_query($con,$query);
+				$num=mysqli_num_rows($result);
+				
+				?>
+                <font size="5"><b><?php echo $num?></b></font>
                 <hr>
             </div>
         </div>
                 <div class="panel panel-default col-sm-3" style="background-color:#da932c;color:white;">
             <div class="panel-body" style="background-color:#da932c;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                 <h4>TOTAL SALES:</h4><br>
-                <font size="5">20</font>
+				<?php 
+				$sum="Select sum(T_TOTPRICE) from transact_details";
+				$result=@mysqli_query($con,$sum);
+				$res=mysqli_fetch_assoc($result);
+				$sales=$res['sum(T_TOTPRICE)'];
+				
+				?>
+                <font size="5">₱ <?php echo $sales ?></font>
                 <hr>
             </div>
         </div>
           <div class="panel panel-default col-sm-3" style="background-color:#d65b4a;color:white;">
             <div class="panel-body" style="background-color:#d65b4a;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                 <h4>TOTAL BOOKS (NOT RETURNED YET)</h4><br>
-                <font size="5">40</font>
+				<?php
+				$query="select * from transact_details where T_ISRETURNED=0";
+				$result=@mysqli_query($con,$query);
+				$numnotret=mysqli_num_rows($result);
+				
+				
+				?>
+				
+                <font size="5"><?php echo $numnotret?></font>
                 <hr>
             </div>
         </div>      

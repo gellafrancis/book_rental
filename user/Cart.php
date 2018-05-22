@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php include("functions/init.php");?>
+<?php include("functions/init.php");
+
+?>
 
 <?php
   
@@ -43,7 +45,7 @@ while($res = fetch_array($query)){
           }
 
 	}else{
-		set_message("We only have " . $stock . " Available " . $title);
+		set_message("We only have " . $stock . " Available " . $title."!");
 	}
 
 }
@@ -62,6 +64,47 @@ if(isset($_GET['remove'])){
      
     }
 
+	if(isset($_POST['check'])){
+		$querynum=@mysqli_query($con,"Select * from book_details");
+		$numrow=mysqli_num_rows($querynum);
+		for($i=1;$i<=$numrow;$i++){
+			if(isset($_SESSION['b_id'.$i])&&$_SESSION['b_id'.$i]!=0){
+				
+				$pricequery="Select B_PRICE from book_details where B_ID='$i'";
+				$result=@mysqli_query($con,$pricequery);
+				while($res=mysqli_fetch_array($result)){
+					$medj=$res['B_PRICE'];
+				}
+				$price=$medj;
+				$qty=$_SESSION['b_id'.$i];
+				
+				$totprice=$price*$_SESSION['b_id'.$i];
+				$startdate=date('Y-m-d');
+				$endate=date('Y-m-d', strtotime($startdate. ' + 7 days'));
+				$isret=0;
+				$ret=date('00-00-00');
+				$overdue=0;
+				$user=$_SESSION['u_id'];
+				
+				
+				
+				
+				$query="INSERT INTO `transact_details`(`T_QTY`, `T_TOTPRICE`, `D_START`, `D_END`, `T_ISRETURNED`, `D_RETURN`, `P_OVERDUE`, `B_ID`, `U_id`) 
+				Values('$qty','$totprice','$startdate','$endate','$isret','$ret','$overdue','$i','$user')";
+				@mysqli_query($con,$query);
+				$query1="Update book_details set B_QTY=B_QTY-'$qty', RENT_COUNT=RENT_COUNT+1 where B_ID='$i'";
+				@mysqli_query($con,$query1);
+				
+				unset($_SESSION['b_id'.$i]);
+				
+				
+			}
+			
+			
+		}
+		
+		
+	}
 
 
 function cart(){
@@ -345,7 +388,7 @@ echo $book;
 	    <div class="items">
                         <h1><i class="fa fa-shopping-cart"></i> Shopping Cart</h1>
                         <h5><a href="Rent.php" style="color:grey">Home</a> <b>></b> <a href="#" style="color:orange">Shopping Cart</a> </h5> 
-                      <?php  display_message();
+                     <p><font color="red"><b><?php  display_message();
                        
 
                             
@@ -353,7 +396,7 @@ echo $book;
                         
                        
                       
-                      ?>                             
+                      ?><b>	</font></p>                             
 
         <hr>
   <div class="bonus-products">
@@ -374,7 +417,10 @@ echo $book;
                             </tr>
                         </thead>
                         <tbody>
-                        <?php cart(); ?>
+                        <?php cart(); 
+						
+						
+						?>
                             
                         </tbody>
                     </table>
@@ -387,7 +433,7 @@ echo $book;
              </div>
             <div style="float:right"> 
                 <table width="200">
-                   
+                   <form method="POST"action="Cart.php">
                     <tr>
                         <td>
                             <font size="2px" style="padding-right: 5%;color:grey"> SUBTOTAL: </font>
@@ -401,7 +447,7 @@ echo $book;
                             <font size="2px" style="padding-right: 5%;color:grey"> SHIPPING: </font> 
                         </td>
                         <td>
-                            <font size="3px" style="color:orange;">₱  <?php echo $super_total_shipping; ?></font>
+                            <font size="3px" style="color:orange;">₱  <?php if(isset($super_total_shipping)){echo $super_total_shipping;}else{echo "0";} ?></font>
                         </td>                        
                     </tr>
                     <hr>     
@@ -413,13 +459,14 @@ echo $book;
                             <font size="5px" style="padding-right: 5%;color:grey"><b> TOTAL: </b></font>
                         </td>
                         <td>
-                            <font size="5px" style="color:orange;"> <b> <?php  echo $super_total_shipping + $super_total;  ?> </b></font>
+                            <font size="5px" style="color:orange;"> <b> ₱<?php echo $super_total ?></b></font>
                         </td>                        
                     </tr>
                     <hr>     
                 </table>
                 <br>
-                <button class="btn btn-success btn-lg" style="float: right;margin-right: 40px;">CHECKOUT</button>               
+                <button class="btn btn-success btn-lg" name="check"style="float: right;margin-right: 40px;">CHECKOUT</button>    
+				</form>
             </div>
         </div>
       </div>

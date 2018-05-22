@@ -1,4 +1,21 @@
-<?php include("functions/init.php"); ?>
+<?php include("functions/init.php"); 
+
+
+if(isset($_POST['return'])){
+	
+	$retidbook=$_POST['return'];
+	
+	
+	
+	$queryadd="Update book_details set B_QTY=B_QTY+1";
+	
+	
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -483,7 +500,7 @@
                                         while($res=mysqli_fetch_array($result))
                                         {
                                 
-                                            
+                                            $u_id=$res['u_id'];
                                             $fn1=$res['u_firstname'];
                                             $ln2=$res['u_lastname'];
                                             $email=$res['u_email'];
@@ -491,7 +508,11 @@
                                             $num=$res['u_contactnum'];
                                             
                                         
+										
                                         }
+										$_SESSION['u_id']=$u_id;
+										
+										
                                     ?>              
 
                                     <center><img src="assets/img/nullDP.png" width="10%"></center>
@@ -536,14 +557,32 @@
                                         <div class="panel panel-default " style="background-color:#66b92e;color:white;">
                                             <div class="panel-body" style="background-color:#66b92e;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                                                 <h4>TOTAL BOOKS RENTED</h4><br>
-                                                <font size="5">780</font>
+												<?php 
+												$totbook="Select * from transact_details where U_id='$u_id'";
+												$result=@mysqli_query($con,$totbook);
+												$numbook=mysqli_num_rows($result);
+												
+												?>
+												
+												
+												
+												
+                                                <font size="5"><?php echo $numbook?></font>
                                                 <hr>
                                             </div>
                                         </div> 
                                         <div class="panel panel-default " style="background-color:#da932c;color:white;">
                                             <div class="panel-body" style="background-color:#da932c;color:white;font-family:Montserrat,Helvetica, Open Sans;">
                                                 <h4>BOOKS NOT RETURNED YET</h4><br>
-                                                <font size="5"><b>100</b></font>
+												
+												
+												<?php 
+												$totbook="Select * from transact_details where U_id='$u_id' AND T_ISRETURNED=0";
+												$result=@mysqli_query($con,$totbook);
+												$numtot=mysqli_num_rows($result);
+												
+												?>
+                                                <font size="5"><b><?php echo $numtot?> </b></font>
                                                 <hr>
                                             </div>
                                         </div>
@@ -552,38 +591,93 @@
                                     </div>
                                     
                                 </div>
-                    <h1><b>Books Rented</b></h1>                       
+                    <h1><b>Books Rented</b></h1> 
+						<form method="POST" action="UserProfile.php">
                     <table class="table display responsive no-wrap table-hover" cellspacing="0" width="100%" id="myTable" style="" class="display">
                         <thead>
                             <tr>
                                 <th><b>Book</b></th>
                                 <th><b>Description</b></th>
                                 <th><b>Action</b></th>
-                                
+                                 <th><b>Date Start</b></th>
+								  <th><b>Date Due</b></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img src="assets/img/BookCover/Call Me By Your Name.jpg" width="70"></td>
-                                <td>
-                                    <a href="Book.html" style="color:#FF8329">Call Me By Your Name</a> <br>
-                                    Author: Andre Aciman <br>
-                                    Price: ₱100
-                                </td>
-                                <td><button class="btn btn-warning">Return</button></td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/img/BookCover/The Ones Who Walk Away from Omelas.jpg" width="70"></td>
-                                <td>
-                                    <a href="#" style="color:#FF8329">The Ones Who Walk Away from Omelas</a> <br>
-                                    Author: Ursula K. Le Guin<br>
-                                    Price: ₱100
-                                </td>
-                                <td><button class="btn btn-warning">Return</button></td>
-                            </tr>
+						<?php $query="Select * from transact_details where U_id='$u_id'";
+						$result=@mysqli_query($con,$query);
+						
+						$ctr=0;
+						while($res=mysqli_fetch_array($result)){
+							
+							$bID[$ctr]=$res['B_ID'];
+							$datestart[$ctr]=$res['D_START'];
+							$datedue[$ctr]=$res['D_END'];
+							$isret[$ctr]=$res['T_ISRETURNED'];
+								
+							$bookquery="Select * from book_details where B_ID='$bID[$ctr]'";
+							$result1=@mysqli_query($con,$bookquery);
+							while($res1=mysqli_fetch_array($result1)){
+								$img[$ctr]=$res1['B_IMG'];
+								$title[$ctr]=$res1['B_TITLE'];
+								$author[$ctr]=$res1['B_AUTHOR'];
+								$price[$ctr]=$res1['B_PRICE'];
+								
+								
+								
+							}
+							
+							
+							
+							//tapos if 0 not disabled yung return, if 1 disabled na, if pressed yung button na return, process sa taas
+							
+							
+							$ctr++;
+						}
+						
+						
+						?>
+						<?php 
+						for($i=0;$i<$ctr;$i++){
+							
+							echo "<tr>";
+							echo "<td><img src='../admin/".$img[$i]."' width='70'></td>";
+							echo  "<td><a href='Book.php?value='".$bID[$i]."'style='color:#FF8329'>".$title[$i]."</a><br>";
+							echo "Author: ".$author[$i]."<br>";
+							echo "</td>";
+									echo "<td>".$datestart[$i]."</td>";
+							echo "<td>".$datedue[$i]."</td>";
+							echo "<td> <button class='btn btn-warning' name='return' value='".$bID[$i]."'";
+							if($isret[$i]==1){ echo "disabled";} 
+							echo ">Return</button></td>";
+							
+							
+							echo "</tr>";
+							
+							
+							
+							
+						}
+						
+						
+						
+						
+						
+						
+						?>
+						
+						
+						
+						
+						
+						
+						
+						
+                          
                         </tbody>
                     </table>
                 </div>
+				</form>
                             </div>
                         </div>   
                     </div>
