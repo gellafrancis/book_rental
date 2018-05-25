@@ -348,6 +348,7 @@
         ?>
   				<thead>
 	    				<tr class="warning">
+						<th scope="col">#</th>	
 	      				<th scope="col">Admin ID</th>						
 					      <th scope="col">Last Name</th> 
 	      				<th scope="col">First Name</th>
@@ -360,10 +361,12 @@
   				<tbody>
                     
                     <?php 
+					 $counter = 0;
                      while($row = mysqli_fetch_array($result))
                         {
+						  $counter++;
                           echo "<tr>";
-                          echo "<td>".$row['u_id']."</td>". "" . "<td>".$row['u_lastname']."</td>"."<td>".$row['u_firstname']."</td>"."<td>".$row['u_contactnum']."</td>";
+                          echo "<td>" .$counter."</td>". "" . "<td>".$row['u_id']."</td>". "" . "<td>".$row['u_lastname']."</td>"."<td>".$row['u_firstname']."</td>"."<td>".$row['u_contactnum']."</td>";
                           echo "<td><center><button class='btn btn-warning btn-block' name = 'adminview' value = '".$row['u_id']."'>View</button></center></td>";  
           
                         }

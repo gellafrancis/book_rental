@@ -372,10 +372,11 @@
        
   				<thead>
 	    				<tr class="warning">
+						<th scope="col"><center>#</center></th>
 	      				<th scope="col"><center>Last Name</center></th>						
-					      <th scope="col"><center>First Name</center></th> 
-                <th scope="col"><center>Email</center></th>
-                <th scope="col"><center>Address</center></th>
+					    <th scope="col"><center>First Name</center></th> 
+						<th scope="col"><center>Email</center></th>
+						<th scope="col"><center>Address</center></th>
 	      				<th scope="col"><center>Action</center></th>
 
 	    				</tr>
@@ -383,10 +384,13 @@
   				<tbody>
                     
                     <?php 
+					 $counter = 0;
                      while($row = mysqli_fetch_array($result))
                         {
+						  $counter++;
+						  
                           echo "<tr>";
-                          echo "<td>".$row['u_lastname']."</td>". "" . "<td>".$row['u_firstname']."</td>"."<td>".$row['u_email']."</td>"."<td>".$row['u_address']."</td>";
+                          echo "<td>".$counter."</td>". "" . "<td>".$row['u_lastname']."</td>". "" . "<td>".$row['u_firstname']."</td>"."<td>".$row['u_email']."</td>"."<td>".$row['u_address']."</td>";
                           echo "<td><center><button class='btn btn-warning btn-block' name = 'userview' value = '".$row['u_id']."'>View</button></center></td>";  
           
                         }

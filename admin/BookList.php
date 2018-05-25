@@ -402,6 +402,7 @@
         <table class="table table-striped table-bordered display responsive no-wrap " cellspacing="0" width="100%" id="myTable" style="" class="display" >
 			<thead>
 	    				<tr class="warning">
+						<th scope="col"><center>#</center></th>
 	      				<th scope="col"><center>Book ID</center></th>						
 				  	    <th scope="col"><center>ISBN</center></th> 
 	      				<th scope="col"><center>Title</center></th>
@@ -417,11 +418,14 @@
 				$query="Select * from book_details";
 				$returnstring = "";
 				$result=@mysqli_query($con,$query);
-				
+				$counter = 0;
 				while($res=mysqli_fetch_array($result)){
+					$counter++;
 		       echo $returnstring =  
-    			"<tr>
-    		        <td>" .$res['B_ID']."</td>			
+    			
+					"<tr>
+					<td>" .$counter."</td>
+     		        <td>" .$res['B_ID']."</td>			
     		        <td>" .$res['B_ISBN']."</td>
     		      	<td>" .$res['B_TITLE']."</td>
     				<td>" .$res['B_AUTHOR']."</td>
