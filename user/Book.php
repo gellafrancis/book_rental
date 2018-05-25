@@ -6,6 +6,7 @@
 
 	if(isset($_GET['value']) &&$_GET['value']){
   $var = $_GET['value']; //some_value	
+  if(is_numeric($var)){
   $query="Select * from book_details where B_ID='$var'";
   $result=mysqli_query($con,$query);
 
@@ -30,7 +31,7 @@
 }else{
 		header('location:Rent.php');
 	}
-	
+	}
 	?>
 <html>
 

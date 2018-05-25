@@ -20,7 +20,7 @@
            
          
          }
-         unset($_SESSION['id']); 
+         
          ?>
     <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -561,11 +561,49 @@ function myVal() {
                             <table width="100%"  class = "table table-striped table-bordered" id="myTable">
                                 <thead>
                                 <tr class="warning">
-                                    <th scope='cols'>Book </th>
+                                    <th scope='cols'>Book ID</th>
+									 <th scope='cols'>Book Title</th>
                                     <th scope='cols'>Date Borrowed </th>
                                     <th scope='col'>Date Returned </th>
                                 </tr>
-                                </thead>
+								</thead>
+								<?php 
+								$view="Select * from transact_details where U_id='$id'";
+								
+								$result=@mysqli_query($con,$view);
+								while($res=mysqli_fetch_array($result)){
+									
+									
+									
+									echo "<tr class='warning'>";
+									echo "<th scope='cols'>".$res['B_ID']."</th>";
+									$bookid=$res['B_ID'];
+									$sel="select B_TITLE from book_details where B_ID='$bookid'";
+									$result1=@mysqli_query($con,$sel);
+									while($re1=mysqli_fetch_array($result1)){
+										echo "<th scope='cols'>".$re1['B_TITLE']."</th>";
+										
+										
+									}
+									
+									echo "<th scope='cols'>".$res['D_START']."</th>";
+									echo "<th scope='cols'>".$res['D_RETURN']."</th>";
+									echo "</tr>";
+									
+								}
+								
+								
+								
+								
+								?>
+								
+								
+								
+								
+								
+								
+								
+                                
                                 <tbody>
 
 				</tbody>
