@@ -702,7 +702,7 @@ function myVal() {
                                  <tr>
                                     <td><b>Author:</b> </td>  
                                     <td>
-                                        <input class="form-control" type="text" name="author" value="<?php echo $_SESSION['author'];?>" placeholder="Author" required="required" id="author" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
+                                        <input class="form-control" type="text" name="author" value="<?php echo $_SESSION['author'];?>" placeholder="Author" required="required" id="author" />
                                    </td>
                                 </tr>   
 								<tr>
@@ -727,7 +727,7 @@ function myVal() {
 								
                                     <td><b>Publisher:</b> </td>  
                                     <td>
-                                        <input class="form-control" type="text" name="publisher" value="<?php echo $_SESSION['publisher'];?>" placeholder="Publisher" required="required" id="publisher" pattern="^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$"/>
+                                        <input class="form-control" type="text" name="publisher" value="<?php echo $_SESSION['publisher'];?>" placeholder="Publisher" required="required" id="publisher"/>
                                    </td>
                                 </tr> 
 								
