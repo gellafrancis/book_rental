@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 04:09 PM
+-- Generation Time: May 25, 2018 at 08:24 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -178,7 +178,7 @@ CREATE TABLE `transact_details` (
   `D_START` date NOT NULL,
   `D_END` date NOT NULL,
   `T_ISRETURNED` int(11) NOT NULL,
-  `D_RETURN` int(11) NOT NULL,
+  `D_RETURN` date NOT NULL,
   `P_OVERDUE` int(11) NOT NULL,
   `B_ID` int(11) NOT NULL,
   `U_id` int(11) NOT NULL
@@ -201,32 +201,33 @@ CREATE TABLE `usr_details` (
   `u_type` varchar(10) NOT NULL,
   `u_valcode` text NOT NULL,
   `u_activate` tinyint(4) NOT NULL DEFAULT '0',
-  `u_contactnum` int(11) DEFAULT NULL
+  `u_contactnum` int(11) DEFAULT NULL,
+  `u_status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usr_details`
 --
 
-INSERT INTO `usr_details` (`u_id`, `u_email`, `u_password`, `u_firstname`, `u_lastname`, `u_address`, `u_birthdate`, `u_type`, `u_valcode`, `u_activate`, `u_contactnum`) VALUES
-(1, 'user_01@gmail.com', '123', 'John', 'Doe', 'Blk 23 San Mateo, New York Philippines', '10/31/1990', 'User', 'asdasndjasndasjdasjkdmasd', 0, 919544332),
-(2, 'user_02@gmail.com', '202cb962ac59075b964b07152d234b70', 'John', 'Doe', 'sasdasa', '2000-12-21', 'user', 'ef007769fecab02b489156df5806dc1d', 0, 2147483647),
-(3, 'user_03@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Juan', 'Medina', 'asdasdasdasdadaasda', '2000-12-13', 'user', '4334888adb554142a743d4640c6aa372', 0, 2147483647),
-(4, 'user_04@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Medina', 'dsadasdasdasdasdas', '2000-12-21', 'user', 'f72e05ed3fedbde1b7acd33bc8378ac0', 0, 2147483647),
-(5, 'user_05@gmail.com', '202cb962ac59075b964b07152d234b70', 'Francis', 'Gella', 'sdasdasdasdajskdhasdjasdhnaskda', '2000-12-28', 'user', '20c85a7f909d0ea9fcc7f208b0511332', 0, 2147483647),
-(6, 'user_06@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Antonio', 'awwwwwwwwwwwwwwwww', '2000-12-21', 'user', '5c150b413ba16246a92c670079c9b417', 0, 2147483647),
-(7, 'user_07@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Juan', 'Antonio', 'dasdasfasfasdas', '2000-12-21', 'user', '315003fe87895023896e3022ec714bf0', 0, 2147483647),
-(8, 'user_08@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Antonio', 'dasdsadasidasmdoa', '2000-12-05', 'user', 'eacc5efc0ec4034acfec5fc5adb93f1a', 0, 2147483647),
-(9, 'dasdasa@gmail.com', '202cb962ac59075b964b07152d234b70', 'john', 'nathaniel', 'asdasdasda', '2000-12-21', 'user', '0', 1, 2147483647),
-(10, 'user_09@gmail.com', '202cb962ac59075b964b07152d234b70', 'John', 'Doe', 'dasdasdajdahudiajhdadkajbdjakidjandgajdada', '2000-12-14', 'user', '2498b000a592e7bd96db7c47181d6b9a', 1, 2147483647),
-(11, 'gianestacio@gmail.com', '202cb962ac59075b964b07152d234b70', 'Gian', 'Estacio', 'akjdawhdkasdhasdhak', '1902-01-03', 'user', '0', 1, 2147483647),
-(12, 'adminako1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Uzumaki', 'Naruto', ' ', '', '1994-04-30', '22d6947c166ab722d111288df0b16bb8', 0, 2147483647),
-(13, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'Uzumaki', 'Naruto', '', '1994-04-30', ' ', '0', 127, 0),
-(14, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'Uzumakia', 'Narutoa', '', '1996-07-30', ' ', '0', 127, 0),
-(15, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin', 'ako', '1920-02-02', 'admin', ' ', '0', 127, 0),
-(16, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'sdads', 'asdasda', ' ', '1920-02-02', 'admin', ' ', 0, 2147483647),
-(17, 'adminako2@gmail.com', '202cb962ac59075b964b07152d234b70', 'sdads', 'asdasda', ' ', '1920-02-02', 'admin', ' ', 0, 2147483647),
-(18, 'admin01@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Alpha', 'Admin', ' ', '1998-12-17', 'admin', ' ', 0, 2147483647);
+INSERT INTO `usr_details` (`u_id`, `u_email`, `u_password`, `u_firstname`, `u_lastname`, `u_address`, `u_birthdate`, `u_type`, `u_valcode`, `u_activate`, `u_contactnum`, `u_status`) VALUES
+(1, 'user_01@gmail.com', '123', 'John', 'Doe', 'Blk 23 San Mateo, New York Philippines', '10/31/1990', 'User', 'asdasndjasndasjdasjkdmasd', 0, 919544332, 0),
+(2, 'user_02@gmail.com', '202cb962ac59075b964b07152d234b70', 'John', 'Doe', 'sasdasa', '2000-12-21', 'user', 'ef007769fecab02b489156df5806dc1d', 0, 2147483647, 0),
+(3, 'user_03@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Juan', 'Medina', 'asdasdasdasdadaasda', '2000-12-13', 'user', '4334888adb554142a743d4640c6aa372', 0, 2147483647, 0),
+(4, 'user_04@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Medina', 'dsadasdasdasdasdas', '2000-12-21', 'user', 'f72e05ed3fedbde1b7acd33bc8378ac0', 0, 2147483647, 0),
+(5, 'user_05@gmail.com', '202cb962ac59075b964b07152d234b70', 'Francis', 'Gella', 'sdasdasdasdajskdhasdjasdhnaskda', '2000-12-28', 'user', '20c85a7f909d0ea9fcc7f208b0511332', 0, 2147483647, 0),
+(6, 'user_06@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Antonio', 'awwwwwwwwwwwwwwwww', '2000-12-21', 'user', '5c150b413ba16246a92c670079c9b417', 0, 2147483647, 0),
+(7, 'user_07@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Juan', 'Antonio', 'dasdasfasfasdas', '2000-12-21', 'user', '315003fe87895023896e3022ec714bf0', 0, 2147483647, 0),
+(8, 'user_08@gmail.com', '202cb962ac59075b964b07152d234b70', 'Juan', 'Antonio', 'dasdsadasidasmdoa', '2000-12-05', 'user', 'eacc5efc0ec4034acfec5fc5adb93f1a', 0, 2147483647, 0),
+(9, 'dasdasa@gmail.com', '202cb962ac59075b964b07152d234b70', 'john', 'nathaniel', 'asdasdasda', '2000-12-21', 'user', '0', 1, 2147483647, 0),
+(10, 'user_09@gmail.com', '202cb962ac59075b964b07152d234b70', 'John', 'Doe', 'dasdasdajdahudiajhdadkajbdjakidjandgajdada', '2000-12-14', 'user', '2498b000a592e7bd96db7c47181d6b9a', 1, 2147483647, 0),
+(11, 'gianestacio@gmail.com', '202cb962ac59075b964b07152d234b70', 'Gian', 'Estacio', 'akjdawhdkasdhasdhak', '1902-01-03', 'user', '0', 1, 2147483647, 0),
+(12, 'adminako1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Uzumaki', 'Naruto', ' ', '', '1994-04-30', '22d6947c166ab722d111288df0b16bb8', 0, 2147483647, 0),
+(13, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'Uzumaki', 'Naruto', '', '1994-04-30', ' ', '0', 127, 0, 0),
+(14, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'Uzumakia', 'Narutoa', '', '1996-07-30', ' ', '0', 127, 0, 0),
+(15, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin', 'ako', '1920-02-02', 'admin', ' ', '0', 127, 0, 0),
+(16, 'adminako1@gmail.com', '202cb962ac59075b964b07152d234b70', 'sdads', 'asdasda', ' ', '1920-02-02', 'admin', ' ', 0, 2147483647, 0),
+(17, 'adminako2@gmail.com', '202cb962ac59075b964b07152d234b70', 'sdads', 'asdasda', ' ', '1920-02-02', 'admin', ' ', 0, 2147483647, 0),
+(18, 'admin01@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Alpha', 'Admin', ' ', '1998-12-17', 'admin', ' ', 0, 2147483647, 0);
 
 --
 -- Indexes for dumped tables

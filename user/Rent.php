@@ -432,7 +432,7 @@ p.description {
 </head>
 
 <body >
-    
+<?php if(!logged_in()){ redirect("login.php"); }?>
 <div class="text-center" id="header">
     <h1><img src='assets/img/book.png' width='70'></h1>
   <h2>Rent. Read. Return. </h2>
@@ -452,7 +452,7 @@ p.description {
       </div>
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
         <li><a href="index.php" style="color:white">Home</a></li>
-        <li><a href="#bottom" style="color:white;text-decoration: underline">Rent</a></li>
+        <li><a href="rent.php" style="color:white;text-decoration: underline">Rent</a></li>
         <li><a href="checkout.php" style="color:white">Return</a></li>
         <li><a href="userprofile.php" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
         <li><a href="cart.php" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>

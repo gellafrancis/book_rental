@@ -166,7 +166,7 @@
 </head>
 
 <body>
-    
+<?php if(!logged_in()){ redirect("login.php"); }?>
 <div class="text-center" id="header">
     <h1><img src='assets/img/book.png' width='70'></h1>
   <h2>Rent. Read. Return. </h2>
@@ -187,7 +187,7 @@
       <ul class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
         <li><a href="index.php" style="color:white">Home</a></li>
         <li><a href="Rent.php" style="color:white">Rent</a></li>
-        <li><a href="#" style="color:white">Return</a></li>
+        <li><a href="checkout.php" style="color:white">Return</a></li>
         <li><a href="UserProfile.php" style="color:white"><span class="glyphicon glyphicon-user"></span></a></li>
         <li><a href="Cart.php" style="color:white"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
         <li><a href="Logout.php" style="color:white">Logout</a></li>
