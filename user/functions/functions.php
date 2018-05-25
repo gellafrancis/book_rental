@@ -353,6 +353,9 @@ function logged_in(){
     $email = $_SESSION['email'];
     $sql = "SELECT u_type FROM usr_details WHERE u_email = '$email'";
     $result = query($sql);
+    $sql2 = "UPDATE usr_details SET u_status = '1' WHERE u_email = '$email'";
+    $result2 = query($sql2);
+    confirm($result2);
     if(row_count($result) == 1){
       $row = fetch_array($result);
        $db_type = $row['u_type'];
@@ -368,10 +371,7 @@ function logged_in(){
     }else{
       return false;
     }
-
-
   }
-
 }
 
 function input_search(){

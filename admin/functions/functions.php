@@ -244,6 +244,28 @@ function logged_in(){
   }
 
 }
+
+function deter_status($id){
+  // $id = $_SESSION['id'];
+          $sql="select u_status from usr_details where u_id='$id' limit 1";
+          $result=query($sql);
+ 
+   //confirm($result2);
+   if (row_count($result) == 1){
+     $row = fetch_array($result);
+      $db_type = $row['u_status'];
+      if ($db_type == 1){
+        echo "ONLINE";
+       return true; 
+     }else{
+       echo "OFFLINE";
+       return false;
+     }
+   }else{
+    echo "OFFLINE";
+     return false;
+   }
+ }
 // checkers kung may laman ba yung mga view
 function book_checker(){
   if(!isset($_SESSION['id'])){

@@ -533,7 +533,7 @@ function myVal() {
                                 <tr>
                                     <td><b>Status</b> 
                                     <td>
-                                       Active/Deactivated
+                                    <?php deter_status($id); ?>
                                     </td> 
                                 </tr> 
 
