@@ -440,7 +440,7 @@ function myVal() {
     <div class="mui-divider"></div>
     <ul>
       <li>
-        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php echo $_SESSION['email'] ?></strong></a> 
+        <a class="disable"><strong><i class="fa fa-user"></i> &nbsp;<?php if(logged_in()){echo $_SESSION['email']; }else{redirect("login.php");} ?></strong></a> 
       </li> 
        <li >
           <a href="UserList.php"><strong><i class="fa fa-book"></i> &nbsp;User List</strong></a>
@@ -527,7 +527,13 @@ function myVal() {
                                  <tr>
                                     <td><b>Total Books Rented:</b> 
                                     <td>
-                                        20
+                                    <?php 
+                                      $sql="Select * from transact_details where U_id='$id'";
+                                      $result=@mysqli_query($con,$sql);
+                                      $rented=mysqli_num_rows($result);
+                                      
+                                      echo $rented;
+                                      ?>
                                    </td>
                                 </tr>                               
                                 <tr>
