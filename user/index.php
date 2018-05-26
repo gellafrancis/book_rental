@@ -44,16 +44,11 @@
                 </div>
         </div>
         </nav>
-        <h1 class="text-center" style="margin:70px;color:rgb(255,255,255);font-family:Antic, sans-serif;font-style:oblique;"><br><a class="justify-content-center align-content-center" href="#" style="margin:20px;width:100px;background-size:contain;line-height:0px;color:rgb(255,255,255);font-weight:bold;font-style:normal;">Find your books here.</a></h1>
-        <h4 style="margin:10px;color:rgb(255,255,255);font-family:Antic, sans-serif;font-style:oblique;padding:0;margin-top:0px;line-height:0px;"><br></h4>
-        <form class="search-form" style="padding-right:10%;padding-left:10%;" method="GET" action="Rent.php">
-            <div class="input-group">
-                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" name="search" placeholder="Search by ISBN, Title, Keyword, or Author.">
-                <div class="input-group-append"><button class="btn btn-light" type="submit"  style="background-color:rgb(255,131,41);color:rgb(255,255,255);">Search </button></div>
-            </div>
-        </form>
+        <h1 class="text-center" style="margin:70px;color:rgb(255,255,255);font-family:Antic, sans-serif;font-style:oblique;"><br><a class="justify-content-center align-content-center" href="#" style="margin:10px;width:100px;background-size:contain;line-height:0px;color:rgb(255,255,255);font-weight:bold;font-style:normal;">Find your books here.</a></h1>
         <p style="color:rgb(255,255,255);font-family:Basic, sans-serif;font-weight:bold;">RENT. READ. RETURN.</p>
+       <center><a href="Rent.php">  <button type="submit" class="btn btn-warning btn-lg" style="color:white;">Rent</button></a></center>
         </div>
+
         <div id="bg-bottom" style="margin-bottom:10px;background-image:url(&quot;orange-bg-refonly.jpg&quot;);background-size:cover;"></div>
     </section>
     <section class="d-flex flex-column justify-content-between" id="bg" style="background-image:url(&quot;assets/img/orange.jpg&quot;);height:20%;width:100%;">
